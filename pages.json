@@ -1,0 +1,46 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/main",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/classify/main",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/manage/classify/main",
+			"style": {
+				"navigationBarTitleText": "分类商品管理"
+			}
+		},
+		{
+			"path": "pages/shopCart/main",
+			"style": {
+				"navigationBarTitleText": "购物车"
+			}
+		},
+		{
+			"path": "pages/mine/main",
+			"style": {
+				"navigationBarTitleText": "我的果园"
+			}
+		},
+		{
+			"path": "pages/search/main",
+			"style": {
+				"navigationBarTitleText": "商品搜索"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

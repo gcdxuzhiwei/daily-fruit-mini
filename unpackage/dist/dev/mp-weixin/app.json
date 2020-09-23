@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/classify/main",
+    "pages/manage/classify/main",
+    "pages/shopCart/main",
+    "pages/mine/main",
+    "pages/search/main"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

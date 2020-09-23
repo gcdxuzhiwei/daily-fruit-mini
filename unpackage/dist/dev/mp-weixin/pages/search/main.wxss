@@ -1,0 +1,31 @@
+.search .go.data-v-d7114c52 {
+  display: inline-block;
+  width: 638rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
+  margin-left: 15rpx;
+  background-color: #f5f5f5;
+  color: #bfbfbf;
+  padding-left: 15rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+}
+.search .go ._i.data-v-d7114c52 {
+  display: inline-block;
+  margin-right: 15rpx;
+}
+.search .go input.data-v-d7114c52 {
+  position: relative;
+  top: 12rpx;
+  display: inline-block;
+  width: 550rpx;
+}
+.search .button.data-v-d7114c52 {
+  display: inline-block;
+  color: #65a032;
+  font-size: 30rpx;
+  font-weight: 500;
+  line-height: 30rpx;
+  margin-left: 15rpx;
+}
+

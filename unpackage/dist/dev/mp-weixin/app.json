@@ -3,6 +3,7 @@
     "pages/index/main",
     "pages/classify/main",
     "pages/manage/classify/main",
+    "pages/manage/goods/main",
     "pages/shopCart/main",
     "pages/mine/main",
     "pages/search/main"
@@ -14,5 +15,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap14.json"
 }

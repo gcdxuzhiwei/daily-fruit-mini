@@ -19,6 +19,12 @@
 			}
 		},
 		{
+			"path": "pages/manage/goods/main",
+			"style": {
+				"navigationBarTitleText": "商品管理"
+			}
+		},
+		{
 			"path": "pages/shopCart/main",
 			"style": {
 				"navigationBarTitleText": "购物车"

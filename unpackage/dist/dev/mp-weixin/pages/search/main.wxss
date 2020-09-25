@@ -1,4 +1,5 @@
 .search .go.data-v-d7114c52 {
+  position: relative;
   display: inline-block;
   width: 638rpx;
   height: 72rpx;
@@ -20,6 +21,12 @@
   display: inline-block;
   width: 550rpx;
 }
+.search .go .iconguanbi.data-v-d7114c52 {
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .search .button.data-v-d7114c52 {
   display: inline-block;
   color: #65a032;
@@ -27,5 +34,53 @@
   font-weight: 500;
   line-height: 30rpx;
   margin-left: 15rpx;
+}
+.sousuo.data-v-d7114c52 {
+  position: relative;
+  box-sizing: border-box;
+  width: 720rpx;
+  margin: 20rpx auto;
+  border-radius: 15rpx;
+  box-shadow: 0 0 15rpx #eee;
+  padding: 40rpx 15rpx;
+}
+.sousuo .title.data-v-d7114c52 {
+  margin-bottom: 25rpx;
+  font-size: 35rpx;
+  font-weight: 600;
+  color: #333;
+}
+.sousuo ._i.data-v-d7114c52 {
+  position: absolute;
+  top: 40rpx;
+  right: 20rpx;
+}
+.sousuo .main.data-v-d7114c52 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.sousuo .main ._span.data-v-d7114c52 {
+  background-color: #eee;
+  margin: 12rpx 12rpx;
+  padding: 12rpx;
+  color: #555;
+  font-weight: 500;
+  border-radius: 10rpx;
+  font-size: 27rpx;
+}
+.noGoods.data-v-d7114c52 {
+  margin-top: 200rpx;
+  text-align: center;
+}
+.noGoods ._img.data-v-d7114c52 {
+  width: 200rpx;
+  height: 200rpx;
+}
+.noGoods ._div.data-v-d7114c52 {
+  font-size: 27rpx;
+  color: #444;
 }
 

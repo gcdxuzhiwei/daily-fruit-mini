@@ -1,1 +1,1 @@
-<view class="_div"><view data-event-opts="{{[['tap',[['manager',['$event']]]]]}}" class="test _div" bindtap="__e">管理</view><nav-bar vue-id="6a622b3a-1" nowIndex="3" bind:__l="__l"></nav-bar></view>
+<view class="_div"><view data-event-opts="{{[['tap',[['manager',['$event']]]]]}}" class="test _div" bindtap="__e">分类管理</view><view data-event-opts="{{[['tap',[['goodsManager',['$event']]]]]}}" class="test _div" bindtap="__e">商品管理</view><nav-bar vue-id="6a622b3a-1" nowIndex="3" bind:__l="__l"></nav-bar></view>

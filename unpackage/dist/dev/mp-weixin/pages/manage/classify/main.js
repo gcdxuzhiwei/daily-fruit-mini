@@ -354,11 +354,7 @@ var _default =
         _this3.sortNum = '';
         _this3.get();
       });
-    } },
-
-  onShareAppMessage: function onShareAppMessage() {
-
-  } };exports.default = _default;
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 24)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

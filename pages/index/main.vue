@@ -9,6 +9,9 @@
 	export default {
 		components:{
 			navBar
+		},
+		onShareAppMessage(){
+			
 		}
 	}
 </script>

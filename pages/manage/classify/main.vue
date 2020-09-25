@@ -223,9 +223,6 @@
 					this.get()
 				})
 			}
-		},
-		onShareAppMessage(){
-			
 		}
 	}
 </script>

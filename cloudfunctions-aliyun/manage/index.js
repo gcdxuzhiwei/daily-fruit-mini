@@ -7,9 +7,10 @@ exports.main = async (event, context) => {
 		let first = await collection.where({classify:1}).orderBy("sortNum", "asc").get()
 		let second = await collection.where({classify:2}).orderBy("sortNum", "asc").get()
 		let third = await collection.where({classify:3}).orderBy("sortNum", "asc").get()
+		let thirdStep = await collection.where({classify:3}).orderBy("sortNum", "asc").skip(100).get()
 		first=first.data
 		second=second.data
-		third=third.data
+		third=third.data.concat(thirdStep.data)
 		for(let i=0;i<third.length;i++){
 			let code=third[i].classParentCode
 			for(let j=0;j<second.length;j++){

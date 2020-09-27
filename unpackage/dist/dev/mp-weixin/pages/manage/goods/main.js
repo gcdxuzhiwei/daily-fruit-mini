@@ -188,6 +188,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -202,7 +211,9 @@ var _default =
       rule1: '',
       rule2: '',
       addRule: false,
-      modify: false };
+      modify: false,
+      num: {},
+      numOverlay: false };
 
   },
   mounted: function mounted() {
@@ -347,6 +358,26 @@ var _default =
         _this3.overlay = false;
         _this3.modify = false;
         _this3.getDoods();
+      });
+    },
+    modifyNum: function modifyNum(item) {
+      var item1 = JSON.parse(JSON.stringify(item));
+      item1.goodsNum = item1.goodsNum + '';
+      this.num = item1;
+      this.numOverlay = true;
+    },
+    sureNum: function sureNum() {var _this4 = this;
+      uniCloud.callFunction({
+        name: 'goods',
+        data: {
+          type: "modifyNum",
+          goodsCode: this.num.goodsCode,
+          goodsNum: this.num.goodsNum - 0 } }).
+
+      then(function (res) {
+        _this4.numOverlay = false;
+        _this4.num = {};
+        _this4.getDoods();
       });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 24)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

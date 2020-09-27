@@ -3,6 +3,9 @@
 		<div class="goodItem" v-for="(item,index) in goodsList" :key="index">
 			<div>标题：{{item.firstTitle}}</div>
 			<div>副标题：{{item.secondTitle}}</div>
+			<div class="num">库存:{{item.goodsNum}}
+				<span @click="modifyNum(item)">修改库存</span>
+			</div>
 			<div class="detail" @click='modifyClick(item)'>编辑</div>
 		</div>
 		<div class="add" @click="overlayOpen">添加商品</div>
@@ -36,7 +39,7 @@
 				<div class="finish">
 					<span @click="cancel">取消</span>
 					<span @click="finish">确定</span>
-					<span @click="deleteItem" v-if="modify">删除</span>
+					<span class="delete" @click="deleteItem" v-if="modify">删除</span>
 				</div>
 			</div>
 			<div class="addRule" v-if="addRule">
@@ -51,6 +54,12 @@
 					</div>
 					<div class="sure" @click="addRuleFn">添加</div>
 				</div>
+			</div>
+		</div>
+		<div class="overlay" v-if="numOverlay">
+			<div class="num">
+				输入当前库存：<input type="text" value="" v-model="num.goodsNum"/>
+				<div class="sureNum" @click="sureNum">确定</div>
 			</div>
 		</div>
 	</div>
@@ -70,7 +79,9 @@
 				rule1:'',
 				rule2:'',
 				addRule:false,
-				modify:false
+				modify:false,
+				num:{},
+				numOverlay:false
 			}
 		},
 		mounted() {
@@ -216,6 +227,26 @@
 					this.modify=false
 					this.getDoods()
 				})
+			},
+			modifyNum(item){
+				const item1=JSON.parse(JSON.stringify(item))
+				item1.goodsNum=item1.goodsNum+''
+				this.num=item1
+				this.numOverlay=true
+			},
+			sureNum(){
+				uniCloud.callFunction({
+					name: 'goods',
+					data:{
+						type:"modifyNum",
+						goodsCode:this.num.goodsCode,
+						goodsNum:this.num.goodsNum-0
+					}
+				}).then((res)=>{
+					this.numOverlay=false
+					this.num={}
+					this.getDoods()
+				})
 			}
 		}
 	}
@@ -226,6 +257,7 @@
 		padding-bottom: 100rpx;
 		.goodItem{
 			position: relative;
+			border-bottom: 2rpx solid #eee;
 			.detail{
 				position: absolute;
 				right: 15rpx;
@@ -233,6 +265,13 @@
 				transform: translateY(-50%);
 				background-color: #0084c9;
 				color: #fff;
+			}
+			.num{
+				span{
+					background-color: #0084c9;
+					color: #fff;
+					margin-left: 20rpx;
+				}
 			}
 		}
 		.add{
@@ -255,6 +294,22 @@
 			right: 0;
 			bottom: 0;
 			background-color: rgba(0,0,0,0.5);
+			.num{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				text-align: center;
+				background-color: #fff;
+				width: 400rpx;
+				height: 165rpx;
+				input{
+					background-color: #eee;
+				}
+				.sureNum{
+					color: #0084c9;
+				}
+			}
 			.form{
 				padding: 10rpx;
 				position: absolute;
@@ -306,9 +361,13 @@
 					background-color: #0084c9;
 					color: #fff;
 					border-radius: 25rpx;
+					overflow: hidden;
 					span{
 						flex: 1;
 						text-align: center;
+					}
+					.delete{
+						background-color: red;
 					}
 				}
 			}

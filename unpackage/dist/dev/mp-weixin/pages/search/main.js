@@ -130,7 +130,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;} //
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;} //
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -169,18 +176,37 @@ var _default =
       history: [],
       hotSearch: [],
       goodsList: [],
-      shouldShow: false };
+      keyWord: [],
+      shouldShow: false,
+      showSearch: false,
+      flag: true };
 
   },
   watch: {
-    input: function input(val, preval) {
+    input: function input(val, preval) {var _this = this;
+      this.goodsList = [];
+      this.shouldShow = false;
       if (val == '') {
-        this.goodsList = [];
-        this.shouldShow = false;
+        this.showSearch = false;
+        this.keyWord = [];
+      }
+      if (val !== "" && this.flag) {
+        this.showSearch = true;
+        this.flag = false;
+        uniCloud.callFunction({
+          name: 'search',
+          data: {
+            type: "searchKeyWorld",
+            keyWord: val } }).
+
+        then(function (res) {
+          _this.flag = true;
+          _this.keyWord = res.result;
+        });
       }
     } },
 
-  mounted: function mounted() {var _this = this;
+  mounted: function mounted() {var _this2 = this;
     if (uni.getStorageSync('searchHistory')) {
       this.history = uni.getStorageSync('searchHistory');
     }
@@ -190,11 +216,11 @@ var _default =
         type: "hotSearch" } }).
 
     then(function (res) {
-      _this.hotSearch = res.result.data;
+      _this2.hotSearch = res.result.data;
     });
   },
   methods: {
-    goSearch: function goSearch() {var _this2 = this;
+    goSearch: function goSearch() {var _this3 = this;
       if (!this.input) {
         return;
       }
@@ -207,8 +233,9 @@ var _default =
           keyWord: this.input } }).
 
       then(function (res) {
-        _this2.shouldShow = true;
-        _this2.goodsList = res.result.data;
+        _this3.shouldShow = true;
+        _this3.showSearch = false;
+        _this3.goodsList = res.result;
       });
     },
     deleteHistory: function deleteHistory() {
@@ -223,8 +250,12 @@ var _default =
       this.input = '';
       this.goodsList = [];
       this.shouldShow = false;
+    },
+    fastSearch: function fastSearch(item) {
+      this.input = item;
+      this.goSearch();
     } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 24)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 24)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

@@ -1,9 +1,18 @@
+.search.data-v-d7114c52 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 99999;
+}
 .search .go.data-v-d7114c52 {
   position: relative;
   display: inline-block;
   width: 638rpx;
   height: 72rpx;
-  border-radius: 20rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
   margin-left: 15rpx;
   background-color: #f5f5f5;
   color: #bfbfbf;
@@ -35,13 +44,20 @@
   line-height: 30rpx;
   margin-left: 15rpx;
 }
+.line.data-v-d7114c52 {
+  width: 100%;
+  height: 75rpx;
+}
 .sousuo.data-v-d7114c52 {
   position: relative;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 720rpx;
   margin: 20rpx auto;
-  border-radius: 15rpx;
-  box-shadow: 0 0 15rpx #eee;
+  -webkit-border-radius: 15rpx;
+          border-radius: 15rpx;
+  -webkit-box-shadow: 0 0 15rpx #eee;
+          box-shadow: 0 0 15rpx #eee;
   padding: 40rpx 15rpx;
 }
 .sousuo .title.data-v-d7114c52 {
@@ -68,7 +84,8 @@
   padding: 12rpx;
   color: #555;
   font-weight: 500;
-  border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
   font-size: 27rpx;
 }
 .noGoods.data-v-d7114c52 {
@@ -82,5 +99,18 @@
 .noGoods ._div.data-v-d7114c52 {
   font-size: 27rpx;
   color: #444;
+}
+.showSearch.data-v-d7114c52 {
+  margin-top: 20rpx;
+}
+.showSearch ._div.data-v-d7114c52 {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-weight: 500;
+  margin: 0 15rpx;
+  border-top: 1rpx solid #eee;
+}
+.showSearch ._div.data-v-d7114c52:last-child {
+  border-bottom: 1rpx solid #eee;
 }
 

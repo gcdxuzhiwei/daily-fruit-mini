@@ -8,14 +8,15 @@
 			</div>
 			<div class="button" @click="goSearch">搜索</div>
 		</div>
-		<div class="sousuo" v-if="history.length>0&&!shouldShow">
+		<div class="line"></div>
+		<div class="sousuo" v-if="history.length>0&&!shouldShow&&!showSearch">
 			<div class="title">历史搜索</div>
 			<i class="iconfont iconshanchu" @click='deleteHistory'></i>
 			<div class="main">
 				<span v-for="(item,index) in history" :key='index' @click='clickSearch(item)'>{{item}}</span>
 			</div>
 		</div>
-		<div class="sousuo" v-if="!shouldShow">
+		<div class="sousuo" v-if="!shouldShow&&!showSearch">
 			<div class="title">热门搜索</div>
 			<div class="main">
 				<span v-for='(item,index) in hotSearch' :key='index' @click='clickSearch(item.keyWord)'>{{item.keyWord}}</span>
@@ -25,6 +26,12 @@
 			<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-gcdxuzhiwei/e1eed940-fd71-11ea-b680-7980c8a877b8.png" alt="">
 			<div>抱歉,</div>
 			<div>没有搜索到相关的商品哦~</div>
+		</div>
+		<div class="goodsList" v-if="goodsList.length>0&&shouldShow">
+			有商品
+		</div>
+		<div class="showSearch" v-if="showSearch">
+			<div v-for="(item,index) in keyWord" :key="index" @click="fastSearch(item)">{{item}}</div>
 		</div>
 	</div>
 </template>
@@ -37,14 +44,33 @@
 				history:[],
 				hotSearch:[],
 				goodsList:[],
-				shouldShow:false
+				keyWord:[],
+				shouldShow:false,
+				showSearch:false,
+				flag:true
 			}
 		},
 		watch:{
 			input(val,preval){
+				this.goodsList=[]
+				this.shouldShow=false
 				if(val==''){
-					this.goodsList=[]
-					this.shouldShow=false
+					this.showSearch=false
+					this.keyWord=[]
+				}
+				if(val!==""&&this.flag){
+					this.showSearch=true
+					this.flag=false
+					uniCloud.callFunction({
+						name: 'search',
+						data:{
+							type:"searchKeyWorld",
+							keyWord:val
+						}
+					}).then((res)=>{
+						this.flag=true
+						this.keyWord=res.result
+					})
 				}
 			}
 		},
@@ -76,7 +102,8 @@
 					}
 				}).then((res)=>{
 					this.shouldShow=true
-					this.goodsList=res.result.data
+					this.showSearch=false
+					this.goodsList=res.result
 				})
 			},
 			deleteHistory(){
@@ -91,6 +118,10 @@
 				this.input=''
 				this.goodsList=[]
 				this.shouldShow=false
+			},
+			fastSearch(item){
+				this.input=item
+				this.goSearch()
 			}
 		}
 	}
@@ -98,6 +129,12 @@
 
 <style lang="less" scoped>
 	.search{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: #fff;
+		z-index: 99999;
 		.go{
 			position: relative;
 			display: inline-block;
@@ -135,6 +172,10 @@
 			line-height: 30rpx;
 			margin-left: 15rpx;
 		}
+	}
+	.line{
+		width: 100%;
+		height: 75rpx;
 	}
 	.sousuo{
 		position: relative;
@@ -179,6 +220,19 @@
 		div{
 			font-size: 27rpx;
 			color: #444;
+		}
+	}
+	.showSearch{
+		margin-top: 20rpx;
+		div{
+			height: 100rpx;
+			line-height: 100rpx;
+			font-weight: 500;
+			margin: 0 15rpx;
+			border-top: 1rpx solid #eee;
+		}
+		div:last-child{
+			border-bottom: 1rpx solid #eee;
 		}
 	}
 </style>

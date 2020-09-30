@@ -41,6 +41,12 @@
 			"style": {
 				"navigationBarTitleText": "商品搜索"
 			}
+		},
+		{
+			"path": "pages/login/main",
+			"style": {
+				"navigationBarTitleText": "快捷登录"
+			}
 		}
 	],
 	"globalStyle": {

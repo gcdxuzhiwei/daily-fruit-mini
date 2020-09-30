@@ -6,7 +6,8 @@
     "pages/manage/goods/main",
     "pages/shopCart/main",
     "pages/mine/main",
-    "pages/search/main"
+    "pages/search/main",
+    "pages/login/main"
   ],
   "subPackages": [],
   "window": {
@@ -20,6 +21,5 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap98.json"
+  "usingComponents": {}
 }

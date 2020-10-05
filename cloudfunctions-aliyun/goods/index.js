@@ -57,6 +57,12 @@ exports.main = async (event, context) => {
 		})
 		return res
 	}
+	if(event.type=="getByID"){
+		let res=await collection.where({
+			goodsCode:event.goodsCode
+		}).get()
+		return res
+	}
 	//返回数据给客户端
 	return event
 };

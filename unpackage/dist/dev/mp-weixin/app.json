@@ -4,10 +4,12 @@
     "pages/classify/main",
     "pages/manage/classify/main",
     "pages/manage/goods/main",
+    "pages/manage/index/main",
     "pages/shopCart/main",
     "pages/mine/main",
     "pages/search/main",
-    "pages/login/main"
+    "pages/login/main",
+    "pages/goodsDetail/main"
   ],
   "subPackages": [],
   "window": {

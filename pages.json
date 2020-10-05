@@ -25,6 +25,12 @@
 			}
 		},
 		{
+			"path": "pages/manage/index/main",
+			"style": {
+				"navigationBarTitleText": "首页管理"
+			}
+		},
+		{
 			"path": "pages/shopCart/main",
 			"style": {
 				"navigationBarTitleText": "购物车"
@@ -46,6 +52,12 @@
 			"path": "pages/login/main",
 			"style": {
 				"navigationBarTitleText": "快捷登录"
+			}
+		},
+		{
+			"path": "pages/goodsDetail/main",
+			"style": {
+				"navigationBarTitleText": "商品详情"
 			}
 		}
 	],

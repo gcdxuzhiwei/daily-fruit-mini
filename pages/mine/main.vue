@@ -2,6 +2,7 @@
 	<div>
 		<div class="test" @click="manager">分类管理</div>
 		<div class="test" @click="goodsManager">商品管理</div>
+		<div class="test" @click="indexManager">首页管理</div>
 		<nav-bar nowIndex='3'></nav-bar>
 	</div>
 </template>
@@ -24,6 +25,11 @@
 			goodsManager(){
 				uni.navigateTo({
 					url:'../manage/goods/main'
+				})
+			},
+			indexManager(){
+				uni.navigateTo({
+					url:'../manage/index/main'
 				})
 			}
 		}

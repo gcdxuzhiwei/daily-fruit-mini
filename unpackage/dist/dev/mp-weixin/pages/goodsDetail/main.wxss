@@ -1,0 +1,100 @@
+.swiperBox.data-v-003f5b7a {
+  width: 750rpx;
+  position: relative;
+}
+.swiperBox .count.data-v-003f5b7a {
+  position: absolute;
+  top: 580rpx;
+  right: 30rpx;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-weight: 600;
+  -webkit-border-radius: 25rpx;
+          border-radius: 25rpx;
+  font-size: 30rpx;
+  width: 100rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+.swiperBox .count .swiperIndex.data-v-003f5b7a {
+  font-size: 40rpx;
+}
+.swiperBox .swiper.data-v-003f5b7a {
+  width: 750rpx;
+  height: 750rpx;
+}
+.swiperBox .swiper .swiperItem.data-v-003f5b7a {
+  width: 750rpx;
+  height: 750rpx;
+}
+.swiperBox .swiper .swiperItem ._img.data-v-003f5b7a {
+  width: 750rpx;
+  height: 750rpx;
+}
+.rule.data-v-003f5b7a {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transform: translateY(-100rpx);
+          transform: translateY(-100rpx);
+  width: 690rpx;
+  text-align: center;
+  margin: 0 auto;
+  z-index: 999;
+  background-color: #fff;
+  -webkit-border-radius: 25rpx;
+          border-radius: 25rpx;
+  -webkit-box-shadow: 0 5rpx 5rpx #eee;
+          box-shadow: 0 5rpx 5rpx #eee;
+  padding: 40rpx;
+}
+.rule .firstTitle.data-v-003f5b7a {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+.rule .secondTitle.data-v-003f5b7a {
+  font-size: 32rpx;
+  color: #aaa;
+  margin-top: 5rpx;
+}
+.rule .price.data-v-003f5b7a {
+  font-size: 32rpx;
+  color: #ff8000;
+}
+.rule .price .big.data-v-003f5b7a {
+  font-size: 40rpx;
+  font-weight: 500;
+}
+.rule .ruleList.data-v-003f5b7a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.rule .ruleList .ruleItem.data-v-003f5b7a {
+  margin: 10rpx;
+  font-size: 24rpx;
+  padding: 25rpx;
+  -webkit-box-shadow: 0 0 20rpx #eee;
+          box-shadow: 0 0 20rpx #eee;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+}
+.rule .ruleList .ruleItem .big.data-v-003f5b7a {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.rule .ruleList .nowRule.data-v-003f5b7a {
+  -webkit-box-shadow: 0 0 0 #fff;
+          box-shadow: 0 0 0 #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#feb800), to(#fe8201));
+  background-image: -webkit-linear-gradient(left, #feb800, #fe8201);
+  background-image: linear-gradient(to right, #feb800, #fe8201);
+  color: #fff;
+}
+

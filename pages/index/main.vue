@@ -4,6 +4,11 @@
 			<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-gcdxuzhiwei/8b3498b0-0091-11eb-8ff1-d5dcf8779628.png" alt="">
 			<div class="local" @click="chooseLocal">{{location}}</div>
 		</div>
+		<swiper class="swiper" indicator-dots="true" autoplay="true" circular="true" indicator-active-color="#ff8000">
+			<swiper-item class="swiperItem" v-for="(item,index) in swiper" :key="index">
+				<img :src="item.img" alt="" @click="goDetail(item.goodCode,item.rule)">
+			</swiper-item>
+		</swiper>
 		<nav-bar nowIndex='0'></nav-bar>
 	</div>
 </template>
@@ -16,7 +21,8 @@
 		},
 		data(){
 			return {
-				location:''
+				location:'',
+				swiper:[]
 			}
 		},
 		mounted() {
@@ -30,6 +36,14 @@
 				    }
 				});
 			}
+			uniCloud.callFunction({
+				name: 'indexManager',
+				data:{
+					type:"getSwiper"
+				}
+			}).then((res)=>{
+				this.swiper=res.result.data
+			})
 		},
 		methods:{
 			chooseLocal(){
@@ -43,6 +57,11 @@
 						uni.setStorageSync('location', name);
 				    }
 				});
+			},
+			goDetail(goodCode,rule){
+				uni.navigateTo({
+					url:`../goodsDetail/main?goodCode=${goodCode}&rule=${rule}`
+				})
 			}
 		},
 		onShareAppMessage(){
@@ -83,6 +102,16 @@
 			transform: translateY(-5rpx);
 			border: 11rpx solid transparent;
 			border-top: 11rpx solid #65a032;
+		}
+	}
+	.swiperItem{
+		box-sizing: border-box;
+		padding: 0 15rpx;
+		img{
+			width: 100%;
+			height: 100%;
+			border-radius: 15rpx;
+			overflow: hidden;
 		}
 	}
 </style>

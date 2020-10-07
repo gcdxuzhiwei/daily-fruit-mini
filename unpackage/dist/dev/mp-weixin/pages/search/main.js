@@ -97,6 +97,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l1 =
+    _vm.goodsList.length > 0 && _vm.shouldShow
+      ? _vm.__map(_vm.goodsList, function(item1, index1) {
+          var $orig = _vm.__get_orig(item1)
+
+          var l0 = _vm.__map(item1.rule, function(item2, index2) {
+            var $orig = _vm.__get_orig(item2)
+
+            var m0 = _vm.priceFix(item2[1], 1)
+            var m1 = _vm.priceFix(item2[1], 2)
+            return {
+              $orig: $orig,
+              m0: m0,
+              m1: m1
+            }
+          })
+
+          return {
+            $orig: $orig,
+            l0: l0
+          }
+        })
+      : null
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l1: l1
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -131,6 +162,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uniCloud, uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -254,6 +294,21 @@ var _default =
     fastSearch: function fastSearch(item) {
       this.input = item;
       this.goSearch();
+    },
+    goDetail: function goDetail(item1, item2) {
+      uni.navigateTo({
+        url: "../goodsDetail/main?goodCode=".concat(item1.goodsCode, "&rule=").concat(item2[0]) });
+
+    },
+    priceFix: function priceFix(price, index) {
+      price = price.toFixed(2) + '';
+      var res = price.split('.');
+      if (index == 1) {
+        return res[0];
+      }
+      if (index == 2) {
+        return res[1];
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 18)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/component/navBar */ "pages/component/navBar").then((function () {return resolve(__webpack_require__(/*! ../component/navBar.vue */ 84));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/component/navBar */ "pages/component/navBar").then((function () {return resolve(__webpack_require__(/*! ../component/navBar.vue */ 100));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

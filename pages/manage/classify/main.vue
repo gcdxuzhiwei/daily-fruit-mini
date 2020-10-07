@@ -14,7 +14,7 @@
 			<div class="item" v-for="(item1,index1) in classTree[chooseIndex].children" :key="index1">
 				<div @longpress="modify(item1)">{{item1.className}}</div>
 				<div class="detail">
-					<div class="detailItem" v-for="(item2,index2) in item1.children" @longpress="modify(item2)" :key="index2">
+					<div class="detailItem" v-for="(item2,index2) in item1.children" @longpress="modify(item2)" :key="index2" @click="manageGood(item2)">
 						<img :src="item2.classImg" alt="" class="detailImg">
 						{{item2.className}}
 					</div>
@@ -64,6 +64,14 @@
 				<div class="delete" @click='deleteClass'>删除</div>
 			</div>
 		</div>
+		<div class="addClass" v-if="changeGoods!==''">
+			<div class="main">
+				<div>修改该分类下的商品<span class="cancelChange" @click="cancelChange">取消</span></div>
+				<input class="goodsItem" type="text" placeholder="搜索" v-model="goodsItem">
+				<div @click="chooseGoodsList(item.goodsCode)" v-for="(item,index) in showGoods" :key="index"><span :class="chooseGoods.indexOf(item.goodsCode)==-1?'choose':'choose choosed'"></span>{{item.firstTitle}}</div>
+				<div class="sureChoose" @click="sureChoose">确定</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -78,11 +86,27 @@
 				input:'',
 				classImg:'',
 				sortNum:'',
-				modifyDetail:[]
+				modifyDetail:[],
+				changeGoods:'',
+				showGoods:[],
+				haveGoods:[],
+				chooseGoods:[],
+				goodsItem:''
 			}
 		},
 		mounted() {
 			this.get()
+		},
+		watch:{
+			goodsItem(now){
+				if(now==''){
+					this.showGoods=this.haveGoods
+				}else{
+					this.showGoods=this.haveGoods.filter((val)=>{
+						return val.firstTitle.indexOf(this.goodsItem)!==-1
+					})
+				}
+			}
 		},
 		methods:{
 			get(){
@@ -222,6 +246,48 @@
 					this.sortNum=''
 					this.get()
 				})
+			},
+			manageGood(item){
+				this.chooseGoods=item.children
+				this.changeGoods=item.classTreeCode
+				if(this.haveGoods.length==0){
+					uniCloud.callFunction({
+						name: 'goods',
+						data:{
+							type:"get"
+						}
+					}).then((res)=>{
+						this.haveGoods=res.result.data
+						this.showGoods=res.result.data
+					})
+				}
+				this.showGoods=this.haveGoods
+			},
+			cancelChange(){
+				this.changeGoods=''
+				this.chooseGoods=[]
+			},
+			chooseGoodsList(goodsCode){
+				let x=this.chooseGoods.indexOf(goodsCode)
+				if(x==-1){
+					this.chooseGoods.push(goodsCode)
+				}else{
+					this.chooseGoods.splice(x,1)
+				}
+			},
+			sureChoose(){
+				uniCloud.callFunction({
+					name: 'manage',
+					data:{
+						type:"modifyChildren",
+						children:this.chooseGoods,
+						classTreeCode:this.changeGoods
+					}
+				}).then((res)=>{
+					this.chooseGoods=[]
+					this.changeGoods=''
+					this.get()
+				})
 			}
 		}
 	}
@@ -313,6 +379,7 @@
 				border-radius: 30rpx;
 				width: 500rpx;
 				height: 700rpx;
+				overflow-y: scroll;
 				background-color: #fff;
 				.add{
 					position: absolute;
@@ -389,6 +456,36 @@
 					text-align: center;
 					line-height: 80rpx;
 					border-radius: 10rpx;
+				}
+				.cancelChange{
+					padding:8rpx;
+					background-color: #0084c9;
+				}
+				.choose{
+					display: inline-block;
+					width: 36rpx;
+					height: 36rpx;
+					border: 3rpx solid #111;
+					border-radius: 18rpx;
+				}
+				.choosed{
+					background-color: #0084c9;
+				}
+				.goodsItem{
+					margin: 15rpx 0 10rpx 0;
+					background-color: #eee;
+				}
+				.sureChoose{
+					position: absolute;
+					right: 15rpx;
+					bottom: 15rpx;
+					width: 100rpx;
+					height: 80rpx;
+					border-radius: 40rpx;
+					background-color: #0084c9;
+					color: #fff;
+					line-height: 80rpx;
+					text-align: center;
 				}
 			}
 		}

@@ -1,14 +1,18 @@
 <template>
 	<div>
 		<div class="location">
-			<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-gcdxuzhiwei/8b3498b0-0091-11eb-8ff1-d5dcf8779628.png" alt="">
-			<div class="local" @click="chooseLocal">{{location}}</div>
+			<div class="box">
+				<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-gcdxuzhiwei/8b3498b0-0091-11eb-8ff1-d5dcf8779628.png" alt="">
+				<div class="local" @click="chooseLocal">{{location}}</div>
+				<i @click="goSearch" class="iconfont iconsousuo"></i>
+			</div>
 		</div>
 		<swiper class="swiper" indicator-dots="true" autoplay="true" circular="true" indicator-active-color="#ff8000">
 			<swiper-item class="swiperItem" v-for="(item,index) in swiper" :key="index">
 				<img :src="item.img" alt="" @click="goDetail(item.goodCode,item.rule)">
 			</swiper-item>
 		</swiper>
+		<div class="sss"></div>
 		<nav-bar nowIndex='0'></nav-bar>
 	</div>
 </template>
@@ -62,6 +66,11 @@
 				uni.navigateTo({
 					url:`../goodsDetail/main?goodCode=${goodCode}&rule=${rule}`
 				})
+			},
+			goSearch(){
+				uni.navigateTo({
+					url:"../search/main"
+				})
 			}
 		},
 		onShareAppMessage(){
@@ -72,46 +81,72 @@
 
 <style lang="less" scoped>
 	.location{
-		position: relative;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
 		width: 100%;
-		margin-top: 50rpx;
+		padding-top: 50rpx;
 		height: 100rpx;
 		line-height: 100rpx;
-		img{
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			height: 70rpx;
-			width: 140rpx;
-		}
-		.local{
-			position: absolute;
-			left: 142rpx;
-			top: 50%;
-			transform: translateY(-50%);
-			color: #65a032;
-			font-size: 33rpx;
-			font-weight: 600;
-		}
-		.local::after{
-			content: '';
-			display: inline-block;
-			position: absolute;
-			right: -22rpx;
-			top: 50%;
-			transform: translateY(-5rpx);
-			border: 11rpx solid transparent;
-			border-top: 11rpx solid #65a032;
+		background-color: #fff;
+		z-index: 99999;
+		.box{
+			position: relative;
+			width: 100%;
+			height: 100rpx;
+			img{
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				height: 70rpx;
+				width: 140rpx;
+			}
+			.local{
+				position: absolute;
+				left: 142rpx;
+				top: 50%;
+				transform: translateY(-50%);
+				color: #65a032;
+				font-size: 33rpx;
+				font-weight: 600;
+			}
+			.local::after{
+				content: '';
+				display: inline-block;
+				position: absolute;
+				right: -22rpx;
+				top: 50%;
+				transform: translateY(-5rpx);
+				border: 11rpx solid transparent;
+				border-top: 11rpx solid #65a032;
+			}
+			.iconsousuo{
+				position: absolute;
+				top: 50%;
+				left: 480rpx;
+				font-size: 43rpx;
+				color: #888;
+				font-weight: 500;
+				transform: translateY(-50%);
+			}
 		}
 	}
-	.swiperItem{
-		box-sizing: border-box;
-		padding: 0 15rpx;
-		img{
-			width: 100%;
-			height: 100%;
-			border-radius: 15rpx;
-			overflow: hidden;
+	.swiper{
+		margin-top: 150rpx;
+		.swiperItem{
+			box-sizing: border-box;
+			padding: 0 15rpx;
+			img{
+				width: 100%;
+				height: 100%;
+				border-radius: 15rpx;
+				overflow: hidden;
+			}
 		}
+	}
+	.sss{
+		width: 750rpx;
+		height: 5000rpx;
 	}
 </style>

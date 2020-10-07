@@ -65,6 +65,12 @@ exports.main = async (event, context) => {
 		}
 		return res
 	}
-	
+	if(event.type=='modifyChildren'){
+		const collection = db.collection('goodsClassify')
+		const res = await collection.where({classTreeCode:event.classTreeCode}).update({
+			children:event.children
+		})
+		return res
+	}
 	return event
 };

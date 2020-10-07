@@ -88,6 +88,7 @@
           border-radius: 30rpx;
   width: 500rpx;
   height: 700rpx;
+  overflow-y: scroll;
   background-color: #fff;
 }
 .all .addClass .main .add.data-v-14fd9b9a {
@@ -168,5 +169,37 @@
   line-height: 80rpx;
   -webkit-border-radius: 10rpx;
           border-radius: 10rpx;
+}
+.all .addClass .main .cancelChange.data-v-14fd9b9a {
+  padding: 8rpx;
+  background-color: #0084c9;
+}
+.all .addClass .main .choose.data-v-14fd9b9a {
+  display: inline-block;
+  width: 36rpx;
+  height: 36rpx;
+  border: 3rpx solid #111;
+  -webkit-border-radius: 18rpx;
+          border-radius: 18rpx;
+}
+.all .addClass .main .choosed.data-v-14fd9b9a {
+  background-color: #0084c9;
+}
+.all .addClass .main .goodsItem.data-v-14fd9b9a {
+  margin: 15rpx 0 10rpx 0;
+  background-color: #eee;
+}
+.all .addClass .main .sureChoose.data-v-14fd9b9a {
+  position: absolute;
+  right: 15rpx;
+  bottom: 15rpx;
+  width: 100rpx;
+  height: 80rpx;
+  -webkit-border-radius: 40rpx;
+          border-radius: 40rpx;
+  background-color: #0084c9;
+  color: #fff;
+  line-height: 80rpx;
+  text-align: center;
 }
 

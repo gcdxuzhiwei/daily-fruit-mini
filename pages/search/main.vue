@@ -28,7 +28,16 @@
 			<div>没有搜索到相关的商品哦~</div>
 		</div>
 		<div class="goodsList" v-if="goodsList.length>0&&shouldShow">
-			有商品
+			<div class="goodsItem" v-for="(item1,index1) in goodsList" :key="index1">
+				<div class="goodItem" v-for="(item2,index2) in item1.rule" :key="index2" @click="goDetail(item1,item2)">
+					<img :src="item1.swiperImg[0]" alt="">
+					<span class="firstTitle">{{item1.firstTitle}}</span>
+					<span class="secondTitle">{{item1.secondTitle}}</span>
+					<span class="price">￥<span class="big">{{priceFix(item2[1],1)}}</span>.{{priceFix(item2[1],2)}}</span>
+					<span class="rule">{{item2[0]}}</span>
+					<span class="add">+</span>
+				</div>
+			</div>
 		</div>
 		<div class="showSearch" v-if="showSearch">
 			<div v-for="(item,index) in keyWord" :key="index" @click="fastSearch(item)">{{item}}</div>
@@ -122,6 +131,21 @@
 			fastSearch(item){
 				this.input=item
 				this.goSearch()
+			},
+			goDetail(item1,item2){
+				uni.navigateTo({
+					url:`../goodsDetail/main?goodCode=${item1.goodsCode}&rule=${item2[0]}`
+				})
+			},
+			priceFix(price,index){
+				price=price.toFixed(2)+''
+				let res=price.split('.')
+				if(index==1){
+					return res[0]
+				}
+				if(index==2){
+					return res[1]
+				}
 			}
 		}
 	}
@@ -233,6 +257,66 @@
 		}
 		div:last-child{
 			border-bottom: 1rpx solid #eee;
+		}
+	}
+	.goodItem{
+		position: relative;
+		width: 750rpx;
+		height: 200rpx;
+		margin: 40rpx 0;
+		img{
+			position: absolute;
+			top: 0;
+			left: 30rpx;
+			width: 200rpx;
+			height: 200rpx;
+			border-radius: 18rpx;
+			overflow: hidden;
+		}
+		.firstTitle{
+			position: absolute;
+			left: 250rpx;
+			top: 0;
+			font-size: 30rpx;
+			font-weight: 600;
+		}
+		.secondTitle{
+			position: absolute;
+			left: 250rpx;
+			top: 42rpx;
+			color: rgb(175,175,175);
+			font-size: 28rpx;
+		}
+		.rule{
+			position: absolute;
+			bottom: 0;
+			left: 360rpx;
+			color: rgb(175,175,175);
+			font-size: 26rpx;
+		}
+		.price{
+			position: absolute;
+			bottom: 0;
+			left: 250rpx;
+			color: rgb(255,131,6);
+			font-size: 23rpx;
+			font-weight: 500;
+			.big{
+				font-size: 30rpx;
+			}
+		}
+		.add{
+			position: absolute;
+			bottom: 0;
+			right: 30rpx;
+			width: 45rpx;
+			height: 45rpx;
+			border-radius: 22.5rpx;
+			background-image:linear-gradient(to right, rgb(254,184,0) , rgb(254,130,1));
+			color: #fff;
+			line-height: 45rpx;
+			text-align: center;
+			font-weight: 700;
 		}
 	}
 </style>

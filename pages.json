@@ -59,6 +59,12 @@
 			"style": {
 				"navigationBarTitleText": "商品详情"
 			}
+		},
+		{
+			"path": "pages/rule/main",
+			"style": {
+				"navigationBarTitleText": "退换货规则"
+			}
 		}
 	],
 	"globalStyle": {

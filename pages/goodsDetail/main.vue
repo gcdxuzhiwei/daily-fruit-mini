@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="swiperBox">
-			<div class="count"><span class="swiperIndex">{{swiperIndex+1}}</span>{{`/${good.swiperImg.length?good.swiperImg.length:0}`}}</div>
+			<div class="count" v-if="good.swiperImg.length"><span class="swiperIndex">{{swiperIndex+1}}</span>{{`/${good.swiperImg.length}`}}</div>
 			<swiper class="swiper" autoplay="true" circular="true" @change="swiperChange">
 				<swiper-item class="swiperItem" v-for="(item,index) in good.swiperImg" :key="index">
 					<img :src="item" alt="">
@@ -20,6 +20,15 @@
 					{{item[0].slice(item[0].indexOf(' '),item[0].length)}}
 				</span>
 			</div>
+			<div class="time">最快明天08:00-18:00送达</div>
+			<div class="safety" @click="goSafety">
+				<span class="left"><i class="iconfont iconanquanbaozhang2"></i>保障</span>
+				<span>48小时退换货·全程冷链·果园标准</span>
+				<i class="iconfont iconxiangyou"></i>
+			</div>
+		</div>
+		<div class="imgList" v-if="good.imgList">
+			<image @click="preview(item)" class="imgItem" mode="widthFix" :src="item" alt="" v-for="(item,index) in good.imgList" :key="index">
 		</div>
 	</div>
 </template>
@@ -64,6 +73,17 @@ export default {
 				return
 			}
 			this.ruleIndex=index
+		},
+		goSafety(){
+			uni.navigateTo({
+				url:"../rule/main"
+			})
+		},
+		preview(item){
+			wx.previewImage({
+			  current: item, // 当前显示图片的http链接
+			  urls: this.good.imgList // 需要预览的图片http链接列表
+			})
 		}
 	}
 }
@@ -93,6 +113,7 @@ export default {
 			}
 		}
 		.swiper{
+			z-index: 0;
 			width: 750rpx;
 			height: 750rpx;
 			.swiperItem{
@@ -111,7 +132,7 @@ export default {
 		width: 690rpx;
 		text-align: center;
 		margin: 0 auto;
-		z-index: 999;
+		z-index: 99999;
 		background-color: #fff;
 		border-radius: 25rpx;
 		box-shadow: 0 5rpx 5rpx #eee;
@@ -153,6 +174,43 @@ export default {
 				background-image:linear-gradient(to right, rgb(254,184,0) , rgb(254,130,1));
 				color: #fff;
 			}
+		}
+		.time{
+			font-size: 23rpx;
+			color: #ccc;
+			margin-bottom: 20rpx;
+		}
+		.safety{
+			position: relative;
+			font-size: 28rpx;
+			font-weight: 600;
+			i{
+				display: inline-block;
+			}
+			.iconxiangyou{
+				position: absolute;
+				font-size: 26rpx;
+				right: 0;
+				top: 50%;
+				transform: translateY(-35%);
+			}
+			.left{
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				i{
+					font-size: 26rpx;
+				}
+			}
+		}
+	}
+	.imgList{
+		font-size: 0rpx;
+		.imgItem{
+			width: 750rpx;
+			margin: 0;
+			padding: 0;
 		}
 	}
 </style>

@@ -97,6 +97,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 =
+    _vm.changeGoods !== ""
+      ? _vm.__map(_vm.showGoods, function(item, index) {
+          var $orig = _vm.__get_orig(item)
+
+          var g0 = _vm.chooseGoods.indexOf(item.goodsCode)
+          return {
+            $orig: $orig,
+            g0: g0
+          }
+        })
+      : null
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -199,6 +219,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -210,21 +238,37 @@ var _default =
       input: '',
       classImg: '',
       sortNum: '',
-      modifyDetail: [] };
+      modifyDetail: [],
+      changeGoods: '',
+      showGoods: [],
+      haveGoods: [],
+      chooseGoods: [],
+      goodsItem: '' };
 
   },
   mounted: function mounted() {
     this.get();
   },
+  watch: {
+    goodsItem: function goodsItem(now) {var _this = this;
+      if (now == '') {
+        this.showGoods = this.haveGoods;
+      } else {
+        this.showGoods = this.haveGoods.filter(function (val) {
+          return val.firstTitle.indexOf(_this.goodsItem) !== -1;
+        });
+      }
+    } },
+
   methods: {
-    get: function get() {var _this = this;
+    get: function get() {var _this2 = this;
       uniCloud.callFunction({
         name: 'manage',
         data: {
           type: "get" } }).
 
       then(function (res) {
-        _this.classTree = res.result;
+        _this2.classTree = res.result;
       });
     },
     add: function add(classParentCode, level) {
@@ -239,7 +283,7 @@ var _default =
       this.classImg = '';
       this.sortNum = '';
     },
-    sure: function sure() {var _this2 = this;
+    sure: function sure() {var _this3 = this;
       if (this.input == '') {
         uni.showToast({
           title: '请输入分类名',
@@ -272,12 +316,12 @@ var _default =
             sortNum: this.sortNum - 0 } }).
 
         then(function (res) {
-          _this2.modifyDetail = [];
-          _this2.addDetail = [];
-          _this2.input = '';
-          _this2.classImg = '';
-          _this2.sortNum = '';
-          _this2.get();
+          _this3.modifyDetail = [];
+          _this3.addDetail = [];
+          _this3.input = '';
+          _this3.classImg = '';
+          _this3.sortNum = '';
+          _this3.get();
         });
       } else {
         uniCloud.callFunction({
@@ -290,12 +334,12 @@ var _default =
             sortNum: this.sortNum - 0 } }).
 
         then(function (res) {
-          _this2.showAdd = false;
-          _this2.addDetail = [];
-          _this2.input = '';
-          _this2.classImg = '';
-          _this2.sortNum = '';
-          _this2.get();
+          _this3.showAdd = false;
+          _this3.addDetail = [];
+          _this3.input = '';
+          _this3.classImg = '';
+          _this3.sortNum = '';
+          _this3.get();
         });
       }
     },
@@ -331,7 +375,7 @@ var _default =
       this.sortNum = item.sortNum;
       this.classImg = item.classImg;
     },
-    deleteClass: function deleteClass() {var _this3 = this;
+    deleteClass: function deleteClass() {var _this4 = this;
       var arr = [];
       function searchCode(obj) {
         arr.push(obj.classTreeCode);
@@ -347,12 +391,54 @@ var _default =
           classTreeCode: JSON.stringify(arr) } }).
 
       then(function (res) {
-        _this3.modifyDetail = [];
-        _this3.addDetail = [];
-        _this3.input = '';
-        _this3.classImg = '';
-        _this3.sortNum = '';
-        _this3.get();
+        _this4.modifyDetail = [];
+        _this4.addDetail = [];
+        _this4.input = '';
+        _this4.classImg = '';
+        _this4.sortNum = '';
+        _this4.get();
+      });
+    },
+    manageGood: function manageGood(item) {var _this5 = this;
+      this.chooseGoods = item.children;
+      this.changeGoods = item.classTreeCode;
+      if (this.haveGoods.length == 0) {
+        uniCloud.callFunction({
+          name: 'goods',
+          data: {
+            type: "get" } }).
+
+        then(function (res) {
+          _this5.haveGoods = res.result.data;
+          _this5.showGoods = res.result.data;
+        });
+      }
+      this.showGoods = this.haveGoods;
+    },
+    cancelChange: function cancelChange() {
+      this.changeGoods = '';
+      this.chooseGoods = [];
+    },
+    chooseGoodsList: function chooseGoodsList(goodsCode) {
+      var x = this.chooseGoods.indexOf(goodsCode);
+      if (x == -1) {
+        this.chooseGoods.push(goodsCode);
+      } else {
+        this.chooseGoods.splice(x, 1);
+      }
+    },
+    sureChoose: function sureChoose() {var _this6 = this;
+      uniCloud.callFunction({
+        name: 'manage',
+        data: {
+          type: "modifyChildren",
+          children: this.chooseGoods,
+          classTreeCode: this.changeGoods } }).
+
+      then(function (res) {
+        _this6.chooseGoods = [];
+        _this6.changeGoods = '';
+        _this6.get();
       });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 18)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

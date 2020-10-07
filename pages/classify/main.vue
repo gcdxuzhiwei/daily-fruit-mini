@@ -18,11 +18,11 @@
 					<div class="item" v-for="(item1,index1) in classTree[chooseIndex].children" :key="index1">
 						<div>{{item1.className}}</div>
 						<div class="detail">
-							<div class="detailItem" v-for="(item2,index2) in item1.children" :key="index2">
+							<div class="detailItem" v-for="(item2,index2) in item1.children" :key="index2" @click="goList(item1.children,item2.className)">
 								<img :src="item2.classImg" alt="" class="detailImg">
 								{{item2.className}}
 							</div>
-							<div class="detailItem">
+							<div class="detailItem" @click="goList(item1.children,'全部')">
 								<img src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-gcdxuzhiwei/be58a380-fcbd-11ea-b680-7980c8a877b8.png" alt="" class="detailImg">
 								全部
 							</div>
@@ -67,6 +67,11 @@
 			goSearch(){
 				uni.navigateTo({
 					url:"../search/main"
+				})
+			},
+			goList(item1,item2){
+				uni.navigateTo({
+					url:`../goodsList/main?arr=${JSON.stringify(item1)}&now=${item2}`
 				})
 			}
 		}

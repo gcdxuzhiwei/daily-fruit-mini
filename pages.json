@@ -13,6 +13,12 @@
 			}
 		},
 		{
+			"path": "pages/goodsList/main",
+			"style": {
+				// "navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/manage/classify/main",
 			"style": {
 				"navigationBarTitleText": "分类商品管理"

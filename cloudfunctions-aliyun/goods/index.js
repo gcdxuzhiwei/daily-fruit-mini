@@ -63,6 +63,16 @@ exports.main = async (event, context) => {
 		}).get()
 		return res
 	}
+	if (event.type == 'getGoodsList') {
+		let res=[]
+		for(let i=0;i<event.parentList.length;i++){
+			let search=await collection.where({
+				goodsCode:event.parentList[i]
+			}).get()
+			res.push(search.data[0])
+		}
+		return res
+	}
 	//返回数据给客户端
 	return event
 };

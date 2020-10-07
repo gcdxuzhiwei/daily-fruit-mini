@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/main",
     "pages/classify/main",
+    "pages/goodsList/main",
     "pages/manage/classify/main",
     "pages/manage/goods/main",
     "pages/manage/index/main",
@@ -24,6 +25,5 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap44.json"
+  "usingComponents": {}
 }

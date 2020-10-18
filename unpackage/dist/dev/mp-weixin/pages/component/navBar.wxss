@@ -8,8 +8,10 @@
   display: flex;
   height: 100rpx;
   background-color: #fff;
+  z-index: 999;
 }
 .item.data-v-271accbb {
+  position: relative;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
@@ -19,6 +21,21 @@
 }
 .item .iconfont.data-v-271accbb::before {
   font-size: 55rpx;
+}
+.item .sum.data-v-271accbb {
+  position: absolute;
+  top: 5rpx;
+  right: 40rpx;
+  width: 36rpx;
+  height: 36rpx;
+  -webkit-border-radius: 18rpx;
+          border-radius: 18rpx;
+  color: #fff;
+  font-weight: 600;
+  background-color: red;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 36rpx;
 }
 .nowIndex.data-v-271accbb {
   color: #65a032;

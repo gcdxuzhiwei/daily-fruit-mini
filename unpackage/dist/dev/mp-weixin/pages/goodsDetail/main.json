@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "商品详情",
-  "usingComponents": {}
+  "usingComponents": {
+    "shopcart": "/pages/component/shopcartItem"
+  }
 }

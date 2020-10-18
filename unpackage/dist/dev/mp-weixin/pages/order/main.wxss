@@ -1,0 +1,155 @@
+.order.data-v-7ca6ec13 {
+  padding-bottom: 120rpx;
+}
+.address.data-v-7ca6ec13 {
+  position: relative;
+  width: 700rpx;
+  height: 180rpx;
+  -webkit-border-radius: 20rpx;
+          border-radius: 20rpx;
+  -webkit-box-shadow: 0 0 15rpx #eee;
+          box-shadow: 0 0 15rpx #eee;
+  margin: 20rpx auto;
+  overflow: hidden;
+}
+.address .down.data-v-7ca6ec13 {
+  position: absolute;
+  bottom: 4rpx;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.address .down ._span.data-v-7ca6ec13 {
+  display: inline-block;
+  width: 20rpx;
+  height: 6rpx;
+  margin-right: 15rpx;
+  background-color: #ff9933;
+  -webkit-transform: skewX(45deg);
+          transform: skewX(45deg);
+}
+.address .down ._span.data-v-7ca6ec13:nth-child(even) {
+  background-color: #65a032;
+}
+.address .haveAddress.data-v-7ca6ec13 {
+  width: 600rpx;
+  margin-top: 40rpx;
+  margin-left: 25rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.address .haveAddress .first.data-v-7ca6ec13 {
+  font-weight: 600;
+}
+.address .haveAddress .second.data-v-7ca6ec13 {
+  color: #999;
+}
+.address .haveAddress .iconfont.data-v-7ca6ec13 {
+  position: absolute;
+  top: 25rpx;
+  left: 15rpx;
+  font-size: 66rpx;
+}
+.address .haveIcon.data-v-7ca6ec13 {
+  width: 525rpx;
+  margin-left: 90rpx;
+}
+.bottom.data-v-7ca6ec13 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 750rpx;
+  height: 100rpx;
+  background-color: #fff;
+}
+.bottom .sure.data-v-7ca6ec13 {
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#feb800), to(#fe8201));
+  background-image: -webkit-linear-gradient(left, #feb800, #fe8201);
+  background-image: linear-gradient(to right, #feb800, #fe8201);
+  width: 250rpx;
+  height: 80rpx;
+  -webkit-border-radius: 40rpx;
+          border-radius: 40rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+}
+.bottom .price.data-v-7ca6ec13 {
+  position: absolute;
+  top: 50%;
+  left: 30rpx;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.bottom .price .detail.data-v-7ca6ec13 {
+  font-size: 43rpx;
+  font-weight: 600;
+  color: #ff8000;
+}
+.bag.data-v-7ca6ec13 {
+  position: relative;
+  width: 690rpx;
+  -webkit-box-shadow: 0 0 15rpx #eee;
+          box-shadow: 0 0 15rpx #eee;
+  margin: 25rpx auto 35rpx;
+}
+.bag .title.data-v-7ca6ec13 {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 140rpx;
+  line-height: 140rpx;
+  padding-left: 80rpx;
+  font-size: 45rpx;
+  font-weight: 600;
+}
+.bag .title ._i.data-v-7ca6ec13 {
+  position: absolute;
+  top: 50%;
+  left: 30rpx;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 42rpx;
+  font-weight: 400;
+}
+.bag .title ._span.data-v-7ca6ec13 {
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-weight: 400;
+  font-size: 32rpx;
+  color: #666;
+}
+.bag .arrive.data-v-7ca6ec13 {
+  position: relative;
+  width: 630rpx;
+  margin: 0 auto;
+  font-weight: 600;
+  font-size: 36rpx;
+}
+.bag .arrive .right.data-v-7ca6ec13 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.bag .arrive .right ._i.data-v-7ca6ec13 {
+  display: inline;
+}
+.bag .arrive .right .time.data-v-7ca6ec13 {
+  color: #ff8000;
+  margin-right: 15rpx;
+}
+

@@ -31,7 +31,7 @@
 				</div>
 			</div>
 		</div>
-		<nav-bar nowIndex='1'></nav-bar>
+		<nav-bar ref="nav" nowIndex='1'></nav-bar>
 	</div>
 </template>
 
@@ -49,6 +49,9 @@
 		},
 		mounted() {
 			this.get()
+		},
+		onShow() {
+			this.$refs.nav.getSum()
 		},
 		methods:{
 			get(){

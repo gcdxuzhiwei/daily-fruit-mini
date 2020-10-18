@@ -13,7 +13,7 @@
 			</swiper-item>
 		</swiper>
 		<div class="sss"></div>
-		<nav-bar nowIndex='0'></nav-bar>
+		<nav-bar ref="nav" nowIndex='0'></nav-bar>
 	</div>
 </template>
 
@@ -28,6 +28,9 @@
 				location:'',
 				swiper:[]
 			}
+		},
+		onShow() {
+			this.$refs.nav.getSum()
 		},
 		mounted() {
 			if(uni.getStorageSync('location')){
@@ -63,6 +66,9 @@
 				});
 			},
 			goDetail(goodCode,rule){
+				if(!goodCode||!rule){
+					return
+				}
 				uni.navigateTo({
 					url:`../goodsDetail/main?goodCode=${goodCode}&rule=${rule}`
 				})

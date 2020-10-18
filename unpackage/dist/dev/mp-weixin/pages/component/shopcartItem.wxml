@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['goShopCart',['$event']]]]]}}" class="main _div data-v-6ab98154" bindtap="__e"><view class="iconfont icongouwuchekong _i data-v-6ab98154"></view><block wx:if="{{sum>0}}"><view class="sum _div data-v-6ab98154">{{sum}}</view></block></view>

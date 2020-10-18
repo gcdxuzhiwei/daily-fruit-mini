@@ -11,7 +11,9 @@
     "pages/search/main",
     "pages/login/main",
     "pages/goodsDetail/main",
-    "pages/rule/main"
+    "pages/rule/main",
+    "pages/address/main",
+    "pages/order/main"
   ],
   "subPackages": [],
   "window": {
@@ -25,5 +27,6 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap1.json"
 }

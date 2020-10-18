@@ -30,10 +30,15 @@
 		<div class="imgList" v-if="good.imgList">
 			<image @click="preview(item)" class="imgItem" mode="widthFix" :src="item" alt="" v-for="(item,index) in good.imgList" :key="index">
 		</div>
+		<shopcart ref="shopcart"></shopcart>
+		<div class="bottom">
+			<div @click="addShopcart" class="add">加入购物车</div>
+		</div>
 	</div>
 </template>
 
 <script>
+import shopcart from '../component/shopcartItem.vue'
 export default {
 	data(){
 		return {
@@ -46,6 +51,9 @@ export default {
 		price(){
 			return this.good.rule?this.good.rule[this.ruleIndex][1].toFixed(2)+'':0
 		}
+	},
+	components:{
+		shopcart
 	},
 	onLoad(options) {
 		uniCloud.callFunction({
@@ -84,6 +92,66 @@ export default {
 			  current: item, // 当前显示图片的http链接
 			  urls: this.good.imgList // 需要预览的图片http链接列表
 			})
+		},
+		addShopcart(){
+			if(!uni.getStorageSync('userPhone')){
+				uni.navigateTo({
+					url:'../login/main'
+				})
+			}else{
+				let goodsCode=this.good.goodsCode
+				let rule=this.good.rule[this.ruleIndex][0]
+				let img=this.good.swiperImg[0]
+				let title=this.good.firstTitle
+				let price=this.good.rule[this.ruleIndex][1]
+				const arr=uni.getStorageSync('shopcart')||[]
+				if(arr.length==0){
+					arr.push({
+						goodsCode,
+						img,
+						title,
+						price,
+						rule,
+						sum:1,
+						select:true
+					})
+				}else{
+					let flag=true
+					for(let i=0;i<arr.length;i++){
+						if(arr[i].goodsCode==goodsCode&&arr[i].rule==rule){
+							arr[i].sum=arr[i].sum+1,
+							arr[i].select=true
+							flag=false
+						}
+					}
+					if(flag){
+						arr.push({
+							goodsCode,
+							img,
+							title,
+							price,
+							rule,
+							sum:1,
+							select:true
+						})
+					}
+				}
+				uniCloud.callFunction({
+					name: 'shopcart',
+					data:{
+						type:"update",
+						shopcart:arr,
+						user:uni.getStorageSync('userPhone')
+					}
+				}).then((res)=>{
+					uni.setStorageSync('shopcart',arr)
+					this.$refs.shopcart.getSum()
+					uni.showToast({
+						icon:"none",
+						title:"添加购物车成功"
+					})
+				})
+			}
 		}
 	}
 }
@@ -211,6 +279,28 @@ export default {
 			width: 750rpx;
 			margin: 0;
 			padding: 0;
+		}
+	}
+	.bottom{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 750rpx;
+		height: 100rpx;
+		background-color: #fff;
+		.add{
+			position: absolute;
+			bottom: 15rpx;
+			right: 29rpx;
+			width: 205rpx;
+			height: 74rpx;
+			border-radius: 37rpx;
+			background-image:linear-gradient(to right, rgb(254,184,0) , rgb(254,130,1));
+			text-align: center;
+			line-height: 74rpx;
+			color: #fff;
+			font-weight: 600;
+			font-size: 30rpx;
 		}
 	}
 </style>

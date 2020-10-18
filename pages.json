@@ -1,4 +1,7 @@
 {
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/main",
@@ -15,7 +18,7 @@
 		{
 			"path": "pages/goodsList/main",
 			"style": {
-				// "navigationStyle": "custom"
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -70,6 +73,18 @@
 			"path": "pages/rule/main",
 			"style": {
 				"navigationBarTitleText": "退换货规则"
+			}
+		},
+		{
+			"path": "pages/address/main",
+			"style": {
+				"navigationBarTitleText": "编辑地址"
+			}
+		},
+		{
+			"path": "pages/order/main",
+			"style": {
+				"navigationBarTitleText": "提交订单"
 			}
 		}
 	],

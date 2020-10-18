@@ -266,6 +266,7 @@
 			cancelChange(){
 				this.changeGoods=''
 				this.chooseGoods=[]
+				this.get()
 			},
 			chooseGoodsList(goodsCode){
 				let x=this.chooseGoods.indexOf(goodsCode)

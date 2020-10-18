@@ -11,6 +11,7 @@
 		<div :class="nowIndex=='2'?'item nowIndex':'item'" @click="leave(2)">
 			<i class="iconfont icongouwuchekong"></i>
 			<p>购物车</p>
+			<div class="sum" v-if="sum>0">{{sum}}</div>
 		</div>
 		<div :class="nowIndex=='3'?'item nowIndex':'item'" @click="leave(3)">
 			<i class="iconfont iconwode"></i>
@@ -24,7 +25,20 @@
 		props:{
 			nowIndex:String
 		},
+		data(){
+			return {
+				sum:0
+			}
+		},
+		mounted() {
+			this.getSum()
+		},
 		methods:{
+			getSum(){
+				this.sum=uni.getStorageSync('shopcart').reduce((pre,val)=>{
+					return pre+(val.select?val.sum:0)
+				},0)
+			},
 			leave(index){
 				if(this.nowIndex-0===index){
 					return
@@ -63,14 +77,30 @@
 		display: flex;
 		height: 100rpx;
 		background-color: #fff;
+		z-index: 999;
 	}
 	.item{
+		position: relative;
 		flex: 1;
 		text-align: center;
 		font-size: 26rpx;
 		color: #666;
 		.iconfont::before{
 			font-size: 55rpx;
+		}
+		.sum{
+			position: absolute;
+			top: 5rpx;
+			right: 40rpx;
+			width: 36rpx;
+			height: 36rpx;
+			border-radius: 18rpx;
+			color: #fff;
+			font-weight: 600;
+			background-color: red;
+			font-size: 24rpx;
+			text-align: center;
+			line-height: 36rpx;
 		}
 	}
 	.nowIndex{

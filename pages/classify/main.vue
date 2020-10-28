@@ -55,6 +55,9 @@
 		},
 		methods:{
 			get(){
+				uni.showLoading({
+					title:"加载中"
+				})
 				uniCloud.callFunction({
 					name: 'manage',
 					data:{
@@ -62,6 +65,7 @@
 					}
 				}).then((res)=>{
 					this.classTree=res.result
+					uni.hideLoading()
 				})
 			},
 			choose(index){

@@ -264,6 +264,9 @@ var _default =
       if (!this.input) {
         return;
       }
+      uni.showLoading({
+        title: "搜索中" });
+
       this.history = _toConsumableArray(new Set([this.input].concat(this.history)));
       uni.setStorageSync('searchHistory', this.history);
       uniCloud.callFunction({
@@ -276,6 +279,7 @@ var _default =
         _this3.shouldShow = true;
         _this3.showSearch = false;
         _this3.goodsList = res.result;
+        uni.hideLoading();
       });
     },
     deleteHistory: function deleteHistory() {

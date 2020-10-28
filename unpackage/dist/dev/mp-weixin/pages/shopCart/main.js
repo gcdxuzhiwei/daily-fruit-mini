@@ -269,10 +269,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       login: false,
-      shopcart: [],
+      shopcart: null,
       flag: false,
       bottom: false,
-      address: [],
+      address: null,
       show: false,
       showAddress: null,
       addressIndex: -1 };
@@ -290,16 +290,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     priceTotal: function priceTotal() {
+      if (this.shopcart == null) {
+        return 0;
+      }
       return this.shopcart.reduce(function (pre, val) {
         return val.select ? pre + val.price * val.sum : pre;
       }, 0).toFixed(2);
     },
     sumTotal: function sumTotal() {
+      if (this.shopcart == null) {
+        return 0;
+      }
       return this.shopcart.reduce(function (pre, val) {
         return val.select ? pre + val.sum : pre;
       }, 0);
     },
     all: function all() {
+      if (this.shopcart == null) {
+        return 0;
+      }
       return this.shopcart.reduce(function (pre, val) {
         return pre ? val.select ? true : false : false;
       }, true);
@@ -312,6 +321,10 @@ __webpack_require__.r(__webpack_exports__);
     uni.hideHomeButton();
     this.show = false;
     if (!this.login) {
+      uni.showLoading({
+        title: "加载中",
+        mask: true });
+
       uniCloud.callFunction({
         name: 'shopcart',
         data: {
@@ -323,6 +336,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.shopcart = res.result.data[0].shopcart;
         _this.flag = true;
         _this.$refs.nav.getSum();
+        if (_this.address !== null) {
+          uni.hideLoading();
+        }
       });
       this.getAddress();
     }
@@ -348,6 +364,9 @@ __webpack_require__.r(__webpack_exports__);
             _this2.addressIndex = 0;
           }
         }
+        if (_this2.shopcart !== null) {
+          uni.hideLoading();
+        }
       });
     },
     goIndex: function goIndex() {
@@ -371,6 +390,10 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     update: function update() {var _this3 = this;
+      uni.showLoading({
+        title: "修改中",
+        mask: true });
+
       uniCloud.callFunction({
         name: 'shopcart',
         data: {
@@ -379,6 +402,7 @@ __webpack_require__.r(__webpack_exports__);
           user: uni.getStorageSync('userPhone') } }).
 
       then(function (res) {
+        uni.hideLoading();
         uni.setStorageSync('shopcart', _this3.shopcart);
         uni.showToast({
           icon: "none",

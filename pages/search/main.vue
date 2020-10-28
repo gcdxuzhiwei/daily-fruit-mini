@@ -101,6 +101,9 @@
 				if(!this.input){
 					return
 				}
+				uni.showLoading({
+					title:"搜索中"
+				})
 				this.history=[...new Set([this.input].concat(this.history))]
 				uni.setStorageSync('searchHistory', this.history);
 				uniCloud.callFunction({
@@ -113,6 +116,7 @@
 					this.shouldShow=true
 					this.showSearch=false
 					this.goodsList=res.result
+					uni.hideLoading()
 				})
 			},
 			deleteHistory(){

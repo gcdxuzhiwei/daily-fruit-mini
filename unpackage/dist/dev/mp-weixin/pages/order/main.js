@@ -102,11 +102,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.goods, function(item, index) {
+    var $orig = _vm.__get_orig(item)
+
+    var g0 = item.rule.split(" ")
+    var g1 = (item.sum * item.price).toFixed(2)
+    return {
+      $orig: $orig,
+      g0: g0,
+      g1: g1
+    }
+  })
+
   if (!_vm._isMounted) {
     _vm.e0 = function() {
       return (this$1.show = true)
     }
   }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -140,7 +161,31 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -213,7 +258,8 @@ var _default =
       arriveArr: null,
       arriveIndex: 0,
       arriveDetailIndex: -1,
-      show: false };
+      show: false,
+      otherPrice: '0.00' };
 
   },
   onLoad: function onLoad(options) {
@@ -228,16 +274,16 @@ var _default =
     this.priceStr = this.goods.reduce(function (pre, val) {
       return pre + val.price * val.sum;
     }, 0).toFixed(2);
+    if (this.priceStr - 0 < 100) {
+      this.otherPrice = '10.00';
+      this.priceStr = (this.priceStr - 0 + 10).toFixed(2);
+    }
     this.sum = this.goods.reduce(function (pre, val) {
       return pre + val.sum;
     }, 0);
     var time1 = new Date(new Date().getTime() + 1000 * 60 * 60 * 24);
     var time2 = new Date(new Date().getTime() + 2 * 1000 * 60 * 60 * 24);
-    this.arriveArr = [{
-      time: time1.getMonth() + 1 + '月' + time1.getDate() + '日|周' + this.week(time1.getDay()) },
-    {
-      time: time2.getMonth() + 1 + '月' + time2.getDate() + '日|周' + this.week(time2.getDay()) }];
-
+    this.arriveArr = [time1.getMonth() + 1 + '月' + time1.getDate() + '日|周' + this.week(time1.getDay()), time2.getMonth() + 1 + '月' + time2.getDate() + '日|周' + this.week(time2.getDay())];
   },
   methods: {
     week: function week(num) {
@@ -247,8 +293,49 @@ var _default =
       if (num == 4) return '四';
       if (num == 5) return '五';
       if (num == 6) return '六';
-      if (num == 7) return '日';
+      if (num == 0) return '日';
+    },
+    leftClick: function leftClick(index) {
+      if (index !== this.arriveIndex) {
+        this.arriveIndex = index;
+        this.arriveTime = '';
+        this.arriveDetailIndex = -1;
+      }
+    },
+    rightClick: function rightClick(str, index) {
+      this.arriveDetailIndex = index;
+      this.arriveTime = this.arriveArr[this.arriveIndex] + str;
+      this.show = false;
+    },
+    sureOrder: function sureOrder() {
+      if (!this.arriveTime) {
+        this.show = true;
+        return;
+      }
+      uni.showLoading({
+        title: '生成订单中',
+        mask: true });
+
+      uniCloud.callFunction({
+        name: 'order',
+        data: {
+          type: "set",
+          user: uni.getStorageSync('userPhone'),
+          orderId: (Math.random() + '').slice(2, 8) + new Date().getTime(),
+          arriveTime: this.arriveTime,
+          shopcart: this.shopcart,
+          address: this.address,
+          goods: this.goods,
+          price: this.priceStr - 0 } }).
+
+      then(function (res) {
+        uni.hideLoading();
+        uni.redirectTo({
+          url: "../orderDetail/main?order=".concat(JSON.stringify(res.result.data[0])) });
+
+      });
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 44)["default"]))
 
 /***/ }),
 

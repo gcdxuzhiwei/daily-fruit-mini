@@ -5,7 +5,7 @@
 			<div class="top" @click="goLogin">登录</div>
 			<div class="bottom" @click="goIndex">去首页逛逛</div>
 		</div>
-		<div class="address" v-if="!login&&flag" @click="showMask">
+		<div class="address" v-if="!login&&address!==null" @click="showMask">
 			<div class="noAddress" v-if="address.length==0">
 				<i class="iconfont icontianjiadizhi"></i>添加地址
 			</div>
@@ -100,10 +100,10 @@
 		data(){
 			return{
 				login:false,
-				shopcart:[],
+				shopcart:null,
 				flag:false,
 				bottom:false,
-				address:[],
+				address:null,
 				show:false,
 				showAddress:null,
 				addressIndex:-1
@@ -121,16 +121,25 @@
 		},
 		computed:{
 			priceTotal(){
+				if(this.shopcart==null){
+					return 0
+				}
 				return this.shopcart.reduce((pre,val)=>{
 					return val.select?(pre+(val.price)*val.sum):pre
 				},0).toFixed(2)
 			},
 			sumTotal(){
+				if(this.shopcart==null){
+					return 0
+				}
 				return this.shopcart.reduce((pre,val)=>{
 					return val.select?(pre+val.sum):pre
 				},0)
 			},
 			all(){
+				if(this.shopcart==null){
+					return 0
+				}
 				return this.shopcart.reduce((pre,val)=>{
 					return pre?val.select?true:false:false
 				},true)
@@ -143,6 +152,10 @@
 			uni.hideHomeButton()
 			this.show=false
 			if(!this.login){
+				uni.showLoading({
+					title:"加载中",
+					mask:true
+				})
 				uniCloud.callFunction({
 					name: 'shopcart',
 					data:{
@@ -154,6 +167,9 @@
 					this.shopcart=res.result.data[0].shopcart
 					this.flag=true
 					this.$refs.nav.getSum()
+					if(this.address!==null){
+						uni.hideLoading()
+					}
 				})
 				this.getAddress()
 			}
@@ -179,6 +195,9 @@
 							this.addressIndex=0
 						}
 					}
+					if(this.shopcart!==null){
+						uni.hideLoading()
+					}
 				})
 			},
 			goIndex(){
@@ -202,6 +221,10 @@
 				}
 			},
 			update(){
+				uni.showLoading({
+					title:"修改中",
+					mask:true
+				})
 				uniCloud.callFunction({
 					name: 'shopcart',
 					data:{
@@ -210,6 +233,7 @@
 						user:uni.getStorageSync('userPhone')
 					}
 				}).then((res)=>{
+					uni.hideLoading()
 					uni.setStorageSync('shopcart',this.shopcart)
 					uni.showToast({
 						icon:"none",

@@ -86,6 +86,12 @@
 			"style": {
 				"navigationBarTitleText": "提交订单"
 			}
+		},
+		{
+			"path": "pages/orderDetail/main",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
 		}
 	],
 	"globalStyle": {

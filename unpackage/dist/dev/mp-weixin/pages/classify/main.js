@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/component/navBar */ "pages/component/navBar").then((function () {return resolve(__webpack_require__(/*! ../component/navBar.vue */ 150));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/component/navBar */ "pages/component/navBar").then((function () {return resolve(__webpack_require__(/*! ../component/navBar.vue */ 150));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -187,6 +187,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     get: function get() {var _this = this;
+      uni.showLoading({
+        title: "加载中" });
+
       uniCloud.callFunction({
         name: 'manage',
         data: {
@@ -194,6 +197,7 @@ __webpack_require__.r(__webpack_exports__);
 
       then(function (res) {
         _this.classTree = res.result;
+        uni.hideLoading();
       });
     },
     choose: function choose(index) {
@@ -209,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
         url: "../goodsList/main?arr=".concat(JSON.stringify(item1), "&now=").concat(item2) });
 
     } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 44)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 44)["default"]))
 
 /***/ }),
 

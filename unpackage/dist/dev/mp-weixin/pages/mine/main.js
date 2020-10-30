@@ -24,7 +24,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/component/navBar */ "pages/component/navBar").then((function () {return resolve(__webpack_require__(/*! ../component/navBar.vue */ 150));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/component/navBar */ "pages/component/navBar").then((function () {return resolve(__webpack_require__(/*! ../component/navBar.vue */ 164));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
@@ -56,6 +57,11 @@ __webpack_require__.r(__webpack_exports__);
     indexManager: function indexManager() {
       uni.navigateTo({
         url: '../manage/index/main' });
+
+    },
+    myOrder: function myOrder() {
+      uni.navigateTo({
+        url: '../orderList/main' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

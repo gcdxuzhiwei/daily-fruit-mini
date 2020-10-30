@@ -5,7 +5,7 @@
 			<div class="top" @click="goLogin">登录</div>
 			<div class="bottom" @click="goIndex">去首页逛逛</div>
 		</div>
-		<div class="address" v-if="!login&&address!==null" @click="showMask">
+		<div class="address" v-if="!login&&address!==null&&shopcart&&shopcart.length>0" @click="showMask">
 			<div class="noAddress" v-if="address.length==0">
 				<i class="iconfont icontianjiadizhi"></i>添加地址
 			</div>

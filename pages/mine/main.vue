@@ -3,6 +3,7 @@
 		<div class="test" @click="manager">分类管理</div>
 		<div class="test" @click="goodsManager">商品管理</div>
 		<div class="test" @click="indexManager">首页管理</div>
+		<div class="test" @click="myOrder">我的订单</div>
 		<nav-bar nowIndex='3'></nav-bar>
 	</div>
 </template>
@@ -30,6 +31,11 @@
 			indexManager(){
 				uni.navigateTo({
 					url:'../manage/index/main'
+				})
+			},
+			myOrder(){
+				uni.navigateTo({
+					url:'../orderList/main'
 				})
 			}
 		}

@@ -1,4 +1,5 @@
 'use strict';
+//-1已取消 0待付款 1待发货 2待收货 3待评价 4已完成
 const db = uniCloud.database()
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
@@ -24,6 +25,12 @@ exports.main = async (event, context) => {
 		const res=await order.where({
 			orderId:event.orderId
 		}).get()
+		return res
+	}
+	if(event.type=='get'){
+		const res=await order.where({
+			user:event.user
+		}).orderBy("orderTime", "desc").get()
 		return res
 	}
 	//返回数据给客户端

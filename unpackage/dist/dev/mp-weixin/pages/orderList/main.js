@@ -257,7 +257,7 @@ var _default =
       }
     },
     goDetail: function goDetail(item) {
-      uni.redirectTo({
+      uni.navigateTo({
         url: "../orderDetail/main?order=".concat(JSON.stringify(item)) });
 
     } } };exports.default = _default;

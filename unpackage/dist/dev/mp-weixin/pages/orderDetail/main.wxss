@@ -1,0 +1,30 @@
+.top.data-v-b9bf06fc {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 700rpx;
+  height: 200rpx;
+  margin: 30rpx auto;
+  padding: 30rpx 20rpx;
+  -webkit-box-shadow: 0 0 15rpx #eee;
+          box-shadow: 0 0 15rpx #eee;
+  -webkit-border-radius: 25rpx;
+          border-radius: 25rpx;
+  font-weight: 600;
+  font-size: 38rpx;
+}
+.top ._i.data-v-b9bf06fc {
+  display: inline;
+}
+.top ._span.data-v-b9bf06fc {
+  margin-left: 10rpx;
+}
+.top .time.data-v-b9bf06fc {
+  color: #999;
+  font-size: 28rpx;
+}
+.top .tip.data-v-b9bf06fc {
+  margin: 15rpx 0 5rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+

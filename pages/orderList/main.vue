@@ -98,7 +98,7 @@ export default{
 			}
 		},
 		goDetail(item){
-			uni.redirectTo({
+			uni.navigateTo({
 				url:`../orderDetail/main?order=${JSON.stringify(item)}`
 			})
 		}

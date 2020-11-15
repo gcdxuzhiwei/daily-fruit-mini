@@ -29,8 +29,7 @@
   text-align: center;
   color: #fff;
   background-color: #0084c9;
-  -webkit-border-radius: 35rpx;
-          border-radius: 35rpx;
+  border-radius: 35rpx;
 }
 .manager .overlay.data-v-2baa9e93 {
   position: fixed;
@@ -68,8 +67,7 @@
   width: 680rpx;
   height: 950rpx;
   background-color: #fff;
-  -webkit-border-radius: 35rpx;
-          border-radius: 35rpx;
+  border-radius: 35rpx;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -86,8 +84,7 @@
 .manager .overlay .form .title input.data-v-2baa9e93 {
   width: 530rpx;
   background-color: #eee;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
 }
 .manager .overlay .form .title .chooseImg.data-v-2baa9e93 {
   background-color: #ccc;
@@ -110,8 +107,7 @@
   margin-left: 15rpx;
   margin-top: 5rpx;
   background-color: #eee;
-  -webkit-border-radius: 8rpx;
-          border-radius: 8rpx;
+  border-radius: 8rpx;
 }
 .manager .overlay .form .finish.data-v-2baa9e93 {
   margin-top: 15rpx;
@@ -122,8 +118,7 @@
   height: 50rpx;
   background-color: #0084c9;
   color: #fff;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   overflow: hidden;
 }
 .manager .overlay .form .finish ._span.data-v-2baa9e93 {
@@ -144,8 +139,7 @@
   width: 690rpx;
   height: 960rpx;
   background-color: #fff;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
 }
 .manager .overlay .addRule input.data-v-2baa9e93 {
   background-color: #ddd;

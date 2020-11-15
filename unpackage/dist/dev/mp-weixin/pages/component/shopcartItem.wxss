@@ -5,11 +5,8 @@
   left: 0;
   height: 74rpx;
   width: 104rpx;
-  -webkit-border-top-right-radius: 37rpx;
-          border-top-right-radius: 37rpx;
-  -webkit-border-bottom-right-radius: 37rpx;
-          border-bottom-right-radius: 37rpx;
-  background-image: -webkit-gradient(linear, left top, right top, from(#90c747), to(#6da836));
+  border-top-right-radius: 37rpx;
+  border-bottom-right-radius: 37rpx;
   background-image: -webkit-linear-gradient(left, #90c747, #6da836);
   background-image: linear-gradient(to right, #90c747, #6da836);
 }
@@ -26,8 +23,7 @@
   background-color: #ff8000;
   width: 44rpx;
   height: 29rpx;
-  -webkit-border-radius: 14.5rpx;
-          border-radius: 14.5rpx;
+  border-radius: 14.5rpx;
   position: absolute;
   top: 5rpx;
   right: -3rpx;

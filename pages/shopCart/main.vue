@@ -166,7 +166,9 @@
 					uni.setStorageSync('shopcart',res.result.data[0].shopcart)
 					this.shopcart=res.result.data[0].shopcart
 					this.flag=true
-					this.$refs.nav.getSum()
+					if(this.bottom){
+						this.$refs.nav.getSum()
+					}
 					if(this.address!==null){
 						uni.hideLoading()
 					}
@@ -239,7 +241,9 @@
 						icon:"none",
 						title:"修改成功"
 					})
-					this.$refs.nav.getSum()
+					if(this.bottom){
+						this.$refs.nav.getSum()
+					}
 				})
 			},
 			select(index){

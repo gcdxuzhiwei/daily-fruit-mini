@@ -28,8 +28,7 @@
           transform: translateY(-50%);
   width: 375rpx;
   height: 65rpx;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   background-color: #f5f5f5;
   color: #ccc;
   font-weight: 600;
@@ -87,8 +86,7 @@
   left: 30rpx;
   width: 200rpx;
   height: 200rpx;
-  -webkit-border-radius: 18rpx;
-          border-radius: 18rpx;
+  border-radius: 18rpx;
   overflow: hidden;
 }
 .goodItem .firstTitle.data-v-612fb88d {
@@ -129,9 +127,7 @@
   right: 30rpx;
   width: 45rpx;
   height: 45rpx;
-  -webkit-border-radius: 22.5rpx;
-          border-radius: 22.5rpx;
-  background-image: -webkit-gradient(linear, left top, right top, from(#feb800), to(#fe8201));
+  border-radius: 22.5rpx;
   background-image: -webkit-linear-gradient(left, #feb800, #fe8201);
   background-image: linear-gradient(to right, #feb800, #fe8201);
   color: #fff;

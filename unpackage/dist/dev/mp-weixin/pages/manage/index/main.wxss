@@ -1,8 +1,7 @@
 .first ._span.data-v-0694f897 {
   color: #fff;
   background-color: #0084c9;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   padding: 5rpx;
   margin-left: 20rpx;
 }
@@ -24,8 +23,7 @@
   background-color: #0084c9;
   color: #fff;
   padding: 10rpx;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   font-size: 22rpx;
 }
 .overlay.data-v-0694f897 {
@@ -38,8 +36,7 @@
 }
 .overlay .goods.data-v-0694f897 {
   padding: 15rpx;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
   background-color: #fff;
   width: 550rpx;
   height: 750rpx;
@@ -64,8 +61,7 @@
 .overlay .goods .goodsList .rule .select.data-v-0694f897 {
   background-color: #0084c9;
   color: #fff;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   padding: 8rpx;
   margin-right: 10rpx;
 }

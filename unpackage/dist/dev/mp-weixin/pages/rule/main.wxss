@@ -8,8 +8,7 @@
 }
 .content.data-v-85008a7a {
   margin: 5rpx 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding-left: 30rpx;
 }
 

@@ -28,8 +28,7 @@
   right: 40rpx;
   width: 36rpx;
   height: 36rpx;
-  -webkit-border-radius: 18rpx;
-          border-radius: 18rpx;
+  border-radius: 18rpx;
   color: #fff;
   font-weight: 600;
   background-color: red;

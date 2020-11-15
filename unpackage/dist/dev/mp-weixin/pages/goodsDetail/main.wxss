@@ -10,8 +10,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
   font-weight: 600;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   font-size: 30rpx;
   width: 100rpx;
   height: 50rpx;
@@ -35,8 +34,7 @@
   height: 750rpx;
 }
 .rule.data-v-003f5b7a {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-transform: translateY(-100rpx);
           transform: translateY(-100rpx);
   width: 690rpx;
@@ -44,10 +42,8 @@
   margin: 0 auto;
   z-index: 99999;
   background-color: #fff;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
-  -webkit-box-shadow: 0 5rpx 5rpx #eee;
-          box-shadow: 0 5rpx 5rpx #eee;
+  border-radius: 25rpx;
+  box-shadow: 0 5rpx 5rpx #eee;
   padding: 40rpx;
 }
 .rule .firstTitle.data-v-003f5b7a {
@@ -81,19 +77,15 @@
   margin: 10rpx;
   font-size: 24rpx;
   padding: 25rpx;
-  -webkit-box-shadow: 0 0 20rpx #eee;
-          box-shadow: 0 0 20rpx #eee;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  box-shadow: 0 0 20rpx #eee;
+  border-radius: 20rpx;
 }
 .rule .ruleList .ruleItem .big.data-v-003f5b7a {
   font-size: 32rpx;
   font-weight: 500;
 }
 .rule .ruleList .nowRule.data-v-003f5b7a {
-  -webkit-box-shadow: 0 0 0 #fff;
-          box-shadow: 0 0 0 #fff;
-  background-image: -webkit-gradient(linear, left top, right top, from(#feb800), to(#fe8201));
+  box-shadow: 0 0 0 #fff;
   background-image: -webkit-linear-gradient(left, #feb800, #fe8201);
   background-image: linear-gradient(to right, #feb800, #fe8201);
   color: #fff;
@@ -151,9 +143,7 @@
   right: 29rpx;
   width: 205rpx;
   height: 74rpx;
-  -webkit-border-radius: 37rpx;
-          border-radius: 37rpx;
-  background-image: -webkit-gradient(linear, left top, right top, from(#feb800), to(#fe8201));
+  border-radius: 37rpx;
   background-image: -webkit-linear-gradient(left, #feb800, #fe8201);
   background-image: linear-gradient(to right, #feb800, #fe8201);
   text-align: center;

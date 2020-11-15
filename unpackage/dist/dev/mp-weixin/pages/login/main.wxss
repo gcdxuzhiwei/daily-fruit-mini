@@ -19,9 +19,7 @@
   color: #fff;
   font-weight: 500;
   line-height: 90rpx;
-  -webkit-border-radius: 45rpx;
-          border-radius: 45rpx;
-  background-image: -webkit-gradient(linear, left top, right top, from(#feb800), to(#fe8201));
+  border-radius: 45rpx;
   background-image: -webkit-linear-gradient(left, #feb800, #fe8201);
   background-image: linear-gradient(to right, #feb800, #fe8201);
 }
@@ -43,8 +41,7 @@
   width: 450rpx;
   height: 350rpx;
   background-color: #fff;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
 }
 .main .overlay .form ._div.data-v-b5f31b50 {
   margin-bottom: 20rpx;
@@ -67,8 +64,7 @@
   width: 300rpx;
   height: 100rpx;
   line-height: 100rpx;
-  -webkit-border-radius: 50rpx;
-          border-radius: 50rpx;
+  border-radius: 50rpx;
   background-color: #ff7e01;
   color: #fff;
   text-align: center;

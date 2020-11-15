@@ -155,7 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var shopcart = function shopcart() {__webpack_require__.e(/*! require.ensure | pages/component/shopcartItem */ "pages/component/shopcartItem").then((function () {return resolve(__webpack_require__(/*! ../component/shopcartItem.vue */ 171));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var shopcart = function shopcart() {__webpack_require__.e(/*! require.ensure | pages/component/shopcartItem */ "pages/component/shopcartItem").then((function () {return resolve(__webpack_require__(/*! ../component/shopcartItem.vue */ 173));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

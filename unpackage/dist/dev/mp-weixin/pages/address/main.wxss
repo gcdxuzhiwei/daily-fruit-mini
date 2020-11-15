@@ -1,10 +1,8 @@
 .main.data-v-0c4f8ded {
   margin: 20rpx;
   padding: 20rpx;
-  -webkit-box-shadow: 0 0 15rpx #eee;
-          box-shadow: 0 0 15rpx #eee;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  box-shadow: 0 0 15rpx #eee;
+  border-radius: 25rpx;
 }
 .main .item.data-v-0c4f8ded {
   font-weight: 600;
@@ -33,21 +31,18 @@
   height: 80rpx;
   text-align: center;
   line-height: 80rpx;
-  -webkit-border-radius: 40rpx;
-          border-radius: 40rpx;
+  border-radius: 40rpx;
   color: #666;
   font-weight: 600;
   background-color: #eee;
 }
 .ready.data-v-0c4f8ded {
   color: #fff;
-  background-image: -webkit-gradient(linear, left top, right top, from(#feb800), to(#fe8201));
   background-image: -webkit-linear-gradient(left, #feb800, #fe8201);
   background-image: linear-gradient(to right, #feb800, #fe8201);
 }
 .delete.data-v-0c4f8ded {
-  -webkit-box-shadow: 0 0 15rpx #eee;
-          box-shadow: 0 0 15rpx #eee;
+  box-shadow: 0 0 15rpx #eee;
   background-color: #fff;
   color: #000;
   border: 1rpx solid #ddd;

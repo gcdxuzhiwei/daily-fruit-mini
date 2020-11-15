@@ -45,14 +45,11 @@
   margin: 200rpx;
 }
 .main .order.data-v-3e757b95 {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 700rpx;
   margin: 25rpx;
-  -webkit-box-shadow: 0 0 15rpx #eee;
-          box-shadow: 0 0 15rpx #eee;
-  -webkit-border-radius: 30rpx 25rpx;
-          border-radius: 30rpx 25rpx;
+  box-shadow: 0 0 15rpx #eee;
+  border-radius: 30rpx 25rpx;
   height: 380rpx;
   padding: 65rpx 25rpx 0;
   font-size: 30rpx;
@@ -73,8 +70,7 @@
 .main .order .photo ._img.data-v-3e757b95 {
   width: 130rpx;
   height: 130rpx;
-  -webkit-border-radius: 20rpx;
-          border-radius: 20rpx;
+  border-radius: 20rpx;
   margin-right: 20rpx;
 }
 .main .order .photo ._img.data-v-3e757b95:last-child {

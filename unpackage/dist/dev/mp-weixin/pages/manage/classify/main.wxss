@@ -34,15 +34,12 @@
 .all .right .item.data-v-14fd9b9a {
   font-size: 33rpx;
   font-weight: 600;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 510rpx;
   margin: 15rpx auto 30rpx;
   padding: 30rpx 20rpx;
-  -webkit-border-radius: 15rpx;
-          border-radius: 15rpx;
-  -webkit-box-shadow: 0 0 15rpx #eee;
-          box-shadow: 0 0 15rpx #eee;
+  border-radius: 15rpx;
+  box-shadow: 0 0 15rpx #eee;
 }
 .all .right .item .detail .detailItem.data-v-14fd9b9a {
   font-size: 26rpx;
@@ -84,8 +81,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-border-radius: 30rpx;
-          border-radius: 30rpx;
+  border-radius: 30rpx;
   width: 500rpx;
   height: 700rpx;
   overflow-y: scroll;
@@ -110,8 +106,7 @@
   text-align: center;
   background-color: #0084c9;
   color: #fff;
-  -webkit-border-radius: 12rpx;
-          border-radius: 12rpx;
+  border-radius: 12rpx;
 }
 .all .addClass .main .cancel.data-v-14fd9b9a {
   font-size: 25rpx;
@@ -167,8 +162,7 @@
   font-size: 25rpx;
   text-align: center;
   line-height: 80rpx;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
 }
 .all .addClass .main .cancelChange.data-v-14fd9b9a {
   padding: 8rpx;
@@ -179,8 +173,7 @@
   width: 36rpx;
   height: 36rpx;
   border: 3rpx solid #111;
-  -webkit-border-radius: 18rpx;
-          border-radius: 18rpx;
+  border-radius: 18rpx;
 }
 .all .addClass .main .choosed.data-v-14fd9b9a {
   background-color: #0084c9;
@@ -195,8 +188,7 @@
   bottom: 15rpx;
   width: 100rpx;
   height: 80rpx;
-  -webkit-border-radius: 40rpx;
-          border-radius: 40rpx;
+  border-radius: 40rpx;
   background-color: #0084c9;
   color: #fff;
   line-height: 80rpx;

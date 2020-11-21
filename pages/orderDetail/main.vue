@@ -5,7 +5,7 @@
 				<i :class="'iconfont '+getState(order.state,0)" style="color: rgb(255,153,51);"></i>
 				<span>{{getState(order.state,1)}}</span>
 			</div>
-			<div class="tip">你的订单{{getState(order.state,1)}}，感谢您选择天天果园，欢迎再来呦</div>
+			<div class="tip">你的订单{{getState(order.state,1)}}，感谢您选择天天果园。</div>
 			<div class="time">{{getTime(order.orderTime)}}</div>
 		</div>
 		<div class="address">
@@ -21,6 +21,28 @@
 				<div class="right">
 					<div>{{order.address.detailAddress}}</div>
 					<div class='gray'>{{order.address.name+order.address.phone}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="bag">
+			<div class="title">
+				<i class="iconfont iconbaoguo02"></i>
+				包裹
+				<span>{{order.goods.reduce((pre,val)=>{return pre+val.sum},0)}}件商品<button open-type="contact" class="kefu">在线客服</button></span>
+			</div>
+			<div class="arrive">
+				<div class="left">送达时间</div>
+				<div class="right">
+					<span class="time">{{order.arriveTime}}</span>
+				</div>
+			</div>
+			<div class="baggoods">
+				<div class="item" v-for="(item,index) in order.goods" :key="index">
+					<img :src="item.img" alt="">
+					<div class="firstTitle">{{item.title}}</div>
+					<div class="rule">{{item.rule.split(' ')[0]}}</div>
+					<div class="sum">×{{item.sum}}</div>
+					<div class="bagprice" style="color: #555;">￥{{(item.sum*item.price).toFixed(2)}}</div>
 				</div>
 			</div>
 		</div>
@@ -94,12 +116,13 @@ export default{
 		},
 		again(){
 			const arr=uni.getStorageSync('shopcart')
-			const {goods}=this.order
+			let {goods}=this.order
+			goods=JSON.parse(JSON.stringify(goods))
 			while(goods.length){
-				const {goodsCode}=goods
+				const {goodsCode,rule}=goods[0]
 				let i=-1
 				arr.forEach((v,index)=>{
-					if(v.goodsCode===goodsCode){
+					if(v.goodsCode===goodsCode&&v.rule===rule){
 						i=index
 					}
 				})
@@ -213,7 +236,7 @@ export default{
 }
 .again{
 	position: fixed;
-	bottom: 10rpx;
+	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 700rpx;
@@ -224,5 +247,121 @@ export default{
 	border-radius: 45rpx;
 	box-shadow: 0 0 15rpx #eee;
 	font-weight: 600;
+	background-color: #fff;
 }
+.bag{
+	position: relative;
+	width: 690rpx;
+	box-shadow: 0 0 15rpx #eee;
+	margin: 25rpx auto 35rpx;
+	.title{
+		position: relative;
+		box-sizing: border-box;
+		width: 100%;
+		height: 140rpx;
+		line-height: 140rpx;
+		padding-left: 80rpx;
+		font-size: 45rpx;
+		font-weight: 600;
+		i{
+			position: absolute;
+			top: 50%;
+			left: 30rpx;
+			transform: translateY(-50%);
+			font-size: 42rpx;
+			font-weight: 400;
+		}
+		span{
+			position: absolute;
+			top: 50%;
+			right: 30rpx;
+			transform: translateY(-50%);
+			font-weight: 400;
+			font-size: 32rpx;
+			color: #666;
+		}
+	}
+	.arrive{
+		position: relative;
+		width: 630rpx;
+		margin: 0 auto;
+		font-weight: 600;
+		font-size: 36rpx;
+		.right{
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			i{
+				display: inline;
+			}
+			.time{
+				color: rgb(255,128,0);
+				font-size: 32rpx;
+				position: relative;
+				top: -3rpx;
+			}
+		}
+	}
+	.baggoods{
+		width: 630rpx;
+		margin: 0 auto;
+		padding: 50rpx 0;
+		.item{
+			position: relative;
+			width: 100%;
+			height: 100rpx;
+			margin-bottom: 25rpx;
+			font-size: 30rpx;
+			img{
+				width: 100rpx;
+				height: 100rpx;
+				border-radius: 25rpx;
+			}
+			.firstTitle{
+				position: absolute;
+				top: 0;
+				left: 115rpx;
+				width: 320rpx;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				color: #333;
+			}
+			.rule{
+				position: absolute;
+				bottom: 0;
+				left: 115rpx;
+				color: #666;
+			}
+			.sum{
+				position: absolute;
+				right: 150rpx;
+				top: 0;
+				color: #999;
+			}
+			.bagprice{
+				position: absolute;
+				right: 0;
+				top: 0;
+				font-weight: 600;
+			}
+		}
+		.item:last-child{
+			margin-bottom: 0;
+		}
+	}
+}
+.kefu{
+		display: inline-block;
+		margin: 0 20rpx;
+		box-shadow: 0 0 15rpx #aaa;
+		box-sizing: border-box;
+		padding: 0 20rpx;
+		border-radius: 16rpx;
+		height: 40rpx;
+		line-height: 40rpx;
+		position: relative;
+		top: 10rpx;
+	}
 </style>

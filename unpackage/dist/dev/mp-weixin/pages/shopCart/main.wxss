@@ -3443,6 +3443,7 @@ u-dropdown.data-v-1d35dc49 {
   width: 750rpx;
   height: 100rpx;
   border-top: 3rpx solid #ccc;
+  background-color: #fff;
 }
 .total .button.data-v-1d35dc49 {
   position: absolute;

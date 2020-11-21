@@ -101,8 +101,28 @@ var render = function() {
   var m1 = _vm.order !== null ? _vm.getState(_vm.order.state, 1) : null
   var m2 = _vm.order !== null ? _vm.getState(_vm.order.state, 1) : null
   var m3 = _vm.order !== null ? _vm.getTime(_vm.order.orderTime) : null
-  var g0 = _vm.order !== null ? (_vm.order.price - _vm.price).toFixed(2) : null
-  var g1 = _vm.order !== null ? _vm.order.price.toFixed(2) : null
+  var g0 =
+    _vm.order !== null
+      ? _vm.order.goods.reduce(function(pre, val) {
+          return pre + val.sum
+        }, 0)
+      : null
+  var l0 =
+    _vm.order !== null
+      ? _vm.__map(_vm.order.goods, function(item, index) {
+          var $orig = _vm.__get_orig(item)
+
+          var g1 = item.rule.split(" ")
+          var g2 = (item.sum * item.price).toFixed(2)
+          return {
+            $orig: $orig,
+            g1: g1,
+            g2: g2
+          }
+        })
+      : null
+  var g3 = _vm.order !== null ? (_vm.order.price - _vm.price).toFixed(2) : null
+  var g4 = _vm.order !== null ? _vm.order.price.toFixed(2) : null
   var m4 = _vm.order !== null ? _vm.getTime(_vm.order.orderTime) : null
   _vm.$mp.data = Object.assign(
     {},
@@ -113,7 +133,9 @@ var render = function() {
         m2: m2,
         m3: m3,
         g0: g0,
-        g1: g1,
+        l0: l0,
+        g3: g3,
+        g4: g4,
         m4: m4
       }
     }
@@ -152,6 +174,28 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -247,12 +291,13 @@ var _default =
     },
     again: function again() {var _this = this;
       var arr = uni.getStorageSync('shopcart');var
-      goods = this.order.goods;var _loop = function _loop() {var
+      goods = this.order.goods;
+      goods = JSON.parse(JSON.stringify(goods));var _loop = function _loop() {var _goods$ =
 
-        goodsCode = goods.goodsCode;
+        goods[0],goodsCode = _goods$.goodsCode,rule = _goods$.rule;
         var i = -1;
         arr.forEach(function (v, index) {
-          if (v.goodsCode === goodsCode) {
+          if (v.goodsCode === goodsCode && v.rule === rule) {
             i = index;
           }
         });

@@ -447,6 +447,7 @@
 		width: 750rpx;
 		height: 100rpx;
 		border-top: 3rpx solid #ccc;
+		background-color: #fff;
 		.button{
 			position: absolute;
 			right: 25rpx;

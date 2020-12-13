@@ -104,11 +104,16 @@ var render = function() {
         var $orig = _vm.__get_orig(item)
 
         var g2 = item[0].split(" ")
-        var g3 = item[0].slice(item[0].indexOf(" "), item[0].length)
+        var g3 = item[0].split(" ")
+        var g4 =
+          g3.length > 1
+            ? item[0].slice(item[0].indexOf(" "), item[0].length)
+            : null
         return {
           $orig: $orig,
           g2: g2,
-          g3: g3
+          g3: g3,
+          g4: g4
         }
       })
     : null

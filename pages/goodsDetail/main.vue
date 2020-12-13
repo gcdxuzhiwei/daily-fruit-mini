@@ -17,7 +17,7 @@
 				    v-for="(item,index) in good.rule" :key="index"
 				>
 					<span class="big">{{item[0].split(' ')[0]}}</span>
-					{{item[0].slice(item[0].indexOf(' '),item[0].length)}}
+					{{item[0].split(' ').length>1?item[0].slice(item[0].indexOf(' '),item[0].length):''}}
 				</span>
 			</div>
 			<div class="time">最快明天08:00-18:00送达</div>

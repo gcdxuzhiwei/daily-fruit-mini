@@ -1,5 +1,16 @@
 'use strict';
 const db = uniCloud.database()
+function shuffle(arr) {
+    for (let i=arr.length-1; i>=0; i--) {
+        let rIndex = Math.floor(Math.random()*(i+1));
+        // 打印交换值
+        // console.log(i, rIndex);
+        let temp = arr[rIndex];
+        arr[rIndex] = arr[i];
+        arr[i] = temp;
+    }
+    return arr;
+}
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
 	const collection = db.collection('goods')
@@ -17,6 +28,20 @@ exports.main = async (event, context) => {
 			}
 		}
 		res.data.reverse()
+		return res
+	}if(event.type=='shuffle'){
+		let res=await collection.get()
+		let s=100
+		while(true){
+			let step=await collection.skip(s).get()
+			if(step.data.length==0){
+				break
+			}else{
+				res.data=res.data.concat(step.data)
+				s=s+100
+			}
+		}
+		res=shuffle(res.data).slice(0,10)
 		return res
 	}
 	if(event.type=="add"){

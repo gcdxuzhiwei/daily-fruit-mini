@@ -97,6 +97,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.goodsList, function(item, index) {
+    var $orig = _vm.__get_orig(item)
+
+    var m0 = _vm.priceFix(item.rule[0][1], 1)
+    var m1 = _vm.priceFix(item.rule[0][1], 2)
+    return {
+      $orig: $orig,
+      m0: m0,
+      m1: m1
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -151,6 +171,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
 {
   components: {
     navBar: navBar },
@@ -158,7 +187,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       location: '',
-      swiper: [] };
+      swiper: [],
+      goodsList: [] };
 
   },
   onShow: function onShow() {
@@ -183,8 +213,26 @@ __webpack_require__.r(__webpack_exports__);
     then(function (res) {
       _this.swiper = res.result.data;
     });
+    uniCloud.callFunction({
+      name: 'goods',
+      data: {
+        type: "shuffle" } }).
+
+    then(function (res) {
+      _this.goodsList = res.result;
+    });
   },
   methods: {
+    priceFix: function priceFix(price, index) {
+      price = price.toFixed(2) + '';
+      var res = price.split('.');
+      if (index == 1) {
+        return res[0];
+      }
+      if (index == 2) {
+        return res[1];
+      }
+    },
     chooseLocal: function chooseLocal() {var _this2 = this;
       uni.chooseLocation({
         success: function success(res) {
@@ -209,6 +257,66 @@ __webpack_require__.r(__webpack_exports__);
       uni.navigateTo({
         url: "../search/main" });
 
+    },
+    goGoodDetail: function goGoodDetail(item1, item2) {
+      uni.navigateTo({
+        url: "../goodsDetail/main?goodCode=".concat(item1.goodsCode, "&rule=").concat(item2[0]) });
+
+    },
+    addShopcart: function addShopcart(goodsCode, rule, img, title, price) {var _this3 = this;
+      if (!uni.getStorageSync('userPhone')) {
+        uni.navigateTo({
+          url: '../login/main' });
+
+      } else {
+        var arr = uni.getStorageSync('shopcart') || [];
+        if (arr.length == 0) {
+          arr.push({
+            goodsCode: goodsCode,
+            img: img,
+            title: title,
+            price: price,
+            rule: rule,
+            sum: 1,
+            select: true });
+
+        } else {
+          var flag = true;
+          for (var i = 0; i < arr.length; i++) {
+            if (arr[i].goodsCode == goodsCode && arr[i].rule == rule) {
+              arr[i].sum = arr[i].sum + 1,
+              arr[i].select = true;
+              flag = false;
+            }
+          }
+          if (flag) {
+            arr.push({
+              goodsCode: goodsCode,
+              img: img,
+              title: title,
+              price: price,
+              rule: rule,
+              sum: 1,
+              select: true });
+
+          }
+        }
+        uniCloud.callFunction({
+          name: 'shopcart',
+          data: {
+            type: "update",
+            shopcart: arr,
+            user: uni.getStorageSync('userPhone') } }).
+
+        then(function (res) {
+          uni.setStorageSync('shopcart', arr);
+          _this3.$refs.nav.getSum();
+          uni.showToast({
+            icon: "none",
+            title: "添加购物车成功" });
+
+        });
+      }
     } },
 
   onShareAppMessage: function onShareAppMessage() {

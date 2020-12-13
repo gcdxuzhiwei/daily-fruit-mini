@@ -39,13 +39,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 {
   components: {
     navBar: navBar },
 
   data: function data() {
     return {
-      img: '' };
+      img: '',
+      login: uni.getStorageSync('userPhone') };
 
   },
   onShow: function onShow() {

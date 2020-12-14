@@ -173,7 +173,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 252));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
+//
+//
+//
 //
 //
 //
@@ -253,17 +256,37 @@ var _default =
   methods: {
     getState: function getState(state, index) {
       if (index === 0) {
-        if (state == -1) {return 'iconyiquxiao';}
-        if (state == 0) {return 'icondaifukuan';}
-        if (state == 1) {return 'icondaifahuo';}
-        if (state == 2) {return 'icondaishouhuo';}
-        if (state == 3) {return 'iconyiwancheng';}
+        if (state == -1) {
+          return 'iconyiquxiao';
+        }
+        if (state == 0) {
+          return 'icondaifukuan';
+        }
+        if (state == 1) {
+          return 'icondaifahuo';
+        }
+        if (state == 2) {
+          return 'icondaishouhuo';
+        }
+        if (state == 3) {
+          return 'iconyiwancheng';
+        }
       }
-      if (state == -1) {return '已取消';}
-      if (state == 0) {return '待付款';}
-      if (state == 1) {return '待发货';}
-      if (state == 2) {return '待收货';}
-      if (state == 3) {return '已完成';}
+      if (state == -1) {
+        return '已取消';
+      }
+      if (state == 0) {
+        return '待付款';
+      }
+      if (state == 1) {
+        return '待发货';
+      }
+      if (state == 2) {
+        return '待收货';
+      }
+      if (state == 3) {
+        return '已完成';
+      }
     },
     getTime: function getTime(time) {
       function fix(t) {
@@ -274,7 +297,8 @@ var _default =
         return t;
       }
       var str = new Date(time);
-      return str.getFullYear() + '-' + fix(str.getMonth() + 1) + '-' + fix(str.getDate()) + ' ' + fix(str.getHours()) + ':' + fix(str.getMinutes()) + ':' + fix(str.getSeconds());
+      return str.getFullYear() + '-' + fix(str.getMonth() + 1) + '-' + fix(str.getDate()) + ' ' + fix(str.getHours()) +
+      ':' + fix(str.getMinutes()) + ':' + fix(str.getSeconds());
     },
     copy: function copy() {
       uni.setClipboardData({
@@ -289,8 +313,13 @@ var _default =
     },
     again: function again() {var _this = this;
       var arr = uni.getStorageSync('shopcart');var
-      goods = this.order.goods;
+
+      goods =
+      this.order.goods;
       goods = JSON.parse(JSON.stringify(goods));var _loop = function _loop() {var _goods$ =
+
+
+
 
         goods[0],goodsCode = _goods$.goodsCode,rule = _goods$.rule;
         var i = -1;
@@ -323,6 +352,36 @@ var _default =
           url: "../shopCart/main?item=true" });
 
       });
+    },
+    pay: function pay() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$uniCloud$callF, money;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+
+
+                  uniCloud.callFunction({
+                    name: 'order',
+                    data: {
+                      type: "getMoney",
+                      phone: uni.getStorageSync('userPhone') } }));case 2:_yield$uniCloud$callF = _context.sent;money = _yield$uniCloud$callF.result;if (!(
+
+
+                money < _this2.order.price)) {_context.next = 9;break;}
+                uni.showToast({
+                  title: '余额不足',
+                  icon: 'none' });return _context.abrupt("return");case 9:
+
+
+
+                uniCloud.callFunction({
+                  name: 'order',
+                  data: {
+                    type: "canpay",
+                    id: _this2.order._id,
+                    money: money - _this2.order.price,
+                    phone: uni.getStorageSync('userPhone') } }).
+
+                then(function (res) {
+                  uni.navigateBack();
+                });case 10:case "end":return _context.stop();}}}, _callee);}))();
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 44)["default"]))
 

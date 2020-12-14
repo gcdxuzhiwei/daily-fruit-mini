@@ -43,6 +43,15 @@ exports.main = async (event, context) => {
 			return count.data[0].money
 		}
 	}
+	if(event.type=='canpay'){
+		const count=await order.where({_id:event.id}).update({
+			state:1
+		})
+		const res=await money.where({phone:event.phone}).update({
+			money:event.money
+		})
+		return res
+	}
 	//返回数据给客户端
 	return event
 };

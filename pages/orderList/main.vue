@@ -27,7 +27,7 @@
 export default{
 	data(){
 		return {
-			tab:['全部','待付款','待发货','待收货','待评价'],
+			tab:['全部','待付款','待发货','待收货','已完成'],
 			showList:[],
 			allList:[],
 			showIndex:0,
@@ -36,6 +36,11 @@ export default{
 	},
 	onShow() {
 		this.getList()
+	},
+	onLoad(option) {
+		if(option.show){
+			this.showIndex=option.show
+		}
 	},
 	methods:{
 		changeIndex(index){
@@ -80,8 +85,7 @@ export default{
 			if(state==0){return '待付款'}
 			if(state==1){return '待发货'}
 			if(state==2){return '待收货'}
-			if(state==3){return '待评价'}
-			if(state==4){return '已完成'}
+			if(state==3){return '已完成'}
 		},
 		getdetail(goods,type){
 			const obj=goods.reduce((pre,now)=>{

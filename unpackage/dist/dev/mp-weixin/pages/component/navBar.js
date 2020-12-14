@@ -151,7 +151,7 @@ var _default =
   },
   methods: {
     getSum: function getSum() {
-      this.sum = uni.getStorageSync('shopcart').reduce(function (pre, val) {
+      this.sum = (uni.getStorageSync('shopcart') || []).reduce(function (pre, val) {
         return pre + (val.select ? val.sum : 0);
       }, 0);
     },

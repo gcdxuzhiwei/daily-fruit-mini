@@ -98,6 +98,12 @@
 			"style": {
 				"navigationBarTitleText": "我的订单"
 			}
+		},
+		{
+			"path": "pages/manage/admin/main",
+			"style": {
+				"navigationBarTitleText": "权限管理"
+			}
 		}
 	],
 	"globalStyle": {

@@ -15,4 +15,97 @@
   height: 160rpx;
   border-radius: 80rpx;
 }
+.top .phone.data-v-3b338168 {
+  position: absolute;
+  left: 210rpx;
+  top: 120rpx;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-weight: 600;
+  font-size: 50rpx;
+}
+.top .toLogin.data-v-3b338168 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.top .tab.data-v-3b338168 {
+  position: absolute;
+  left: 0;
+  bottom: 40rpx;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.top .tab .item.data-v-3b338168 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+.top .tab .item .sum.data-v-3b338168 {
+  font-weight: 600;
+}
+.order.data-v-3b338168 {
+  width: 700rpx;
+  height: 300rpx;
+  margin: 20rpx auto;
+  box-shadow: 0 0 15rpx #eee;
+  position: relative;
+}
+.order .title.data-v-3b338168 {
+  position: absolute;
+  top: 35rpx;
+  left: 20rpx;
+  font-weight: 600;
+  font-size: 40rpx;
+}
+.order .all.data-v-3b338168 {
+  position: absolute;
+  top: 37rpx;
+  right: 20rpx;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+.order .all ._span.data-v-3b338168 {
+  margin-left: 16rpx;
+}
+.order .tip.data-v-3b338168 {
+  position: absolute;
+  left: 0;
+  bottom: 40rpx;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.order .tip .item.data-v-3b338168 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+.order .tip .item ._div:first-child > ._span.data-v-3b338168 {
+  font-size: 65rpx;
+}
+.order .tip .item ._div.data-v-3b338168:last-child {
+  font-size: 28rpx;
+}
+.adminBox.data-v-3b338168 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.adminBox ._div.data-v-3b338168 {
+  width: 325rpx;
+  margin: 10rpx 25rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  border: 1px solid #0084c9;
+}
 

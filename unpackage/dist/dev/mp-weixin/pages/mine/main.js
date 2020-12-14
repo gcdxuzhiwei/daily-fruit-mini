@@ -24,7 +24,39 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/component/navBar */ "pages/component/navBar").then((function () {return resolve(__webpack_require__(/*! ../component/navBar.vue */ 166));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/component/navBar */ "pages/component/navBar").then((function () {return resolve(__webpack_require__(/*! ../component/navBar.vue */ 166));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -48,11 +80,17 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       img: '',
-      login: uni.getStorageSync('userPhone') };
+      login: uni.getStorageSync('userPhone'),
+      isAdmin: false,
+      money: '--' };
 
   },
   onShow: function onShow() {
     uni.hideHomeButton();
+    this.getMoney();
+  },
+  mounted: function mounted() {
+    this.getAdmin();
   },
   methods: {
     manager: function manager() {
@@ -70,12 +108,56 @@ __webpack_require__.r(__webpack_exports__);
         url: '../manage/index/main' });
 
     },
-    myOrder: function myOrder() {
+    myOrder: function myOrder(index) {
+      if (index > 0) {
+        uni.navigateTo({
+          url: "../orderList/main?show=".concat(index) });
+
+        return;
+      }
       uni.navigateTo({
         url: '../orderList/main' });
 
+    },
+    adminManager: function adminManager() {
+      uni.navigateTo({
+        url: '../manage/admin/main' });
+
+    },
+    toLogin: function toLogin() {
+      uni.navigateTo({
+        url: '../login/main' });
+
+    },
+    getAdmin: function getAdmin() {var _this = this;
+      if (this.login) {
+        uniCloud.callFunction({
+          name: 'user',
+          data: {
+            type: "admin",
+            phone: this.login } }).
+
+        then(function (res) {
+          if (res.result) {
+            _this.isAdmin = true;
+          }
+        });
+      }
+    },
+    getMoney: function getMoney() {var _this2 = this;
+      if (this.login) {
+        uniCloud.callFunction({
+          name: 'order',
+          data: {
+            type: "getMoney",
+            phone: this.login } }).
+
+        then(function (res) {
+          _this2.money = res.result.toFixed(2);
+        });
+      }
     } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 44)["default"]))
 
 /***/ }),
 

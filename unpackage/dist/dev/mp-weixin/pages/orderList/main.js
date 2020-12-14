@@ -186,7 +186,7 @@ var _default =
 {
   data: function data() {
     return {
-      tab: ['全部', '待付款', '待发货', '待收货', '待评价'],
+      tab: ['全部', '待付款', '待发货', '待收货', '已完成'],
       showList: [],
       allList: [],
       showIndex: 0,
@@ -195,6 +195,11 @@ var _default =
   },
   onShow: function onShow() {
     this.getList();
+  },
+  onLoad: function onLoad(option) {
+    if (option.show) {
+      this.showIndex = option.show;
+    }
   },
   methods: {
     changeIndex: function changeIndex(index) {
@@ -239,8 +244,7 @@ var _default =
       if (state == 0) {return '待付款';}
       if (state == 1) {return '待发货';}
       if (state == 2) {return '待收货';}
-      if (state == 3) {return '待评价';}
-      if (state == 4) {return '已完成';}
+      if (state == 3) {return '已完成';}
     },
     getdetail: function getdetail(goods, type) {
       var obj = goods.reduce(function (pre, now) {

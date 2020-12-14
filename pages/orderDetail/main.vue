@@ -82,15 +82,13 @@ export default{
 				if(state==0){return 'icondaifukuan'}
 				if(state==1){return 'icondaifahuo'}
 				if(state==2){return 'icondaishouhuo'}
-				if(state==3){return 'icondaipingjia'}
-				if(state==4){return 'iconyiwancheng'}
+				if(state==3){return 'iconyiwancheng'}
 			}
 			if(state==-1){return '已取消'}
 			if(state==0){return '待付款'}
 			if(state==1){return '待发货'}
 			if(state==2){return '待收货'}
-			if(state==3){return '待评价'}
-			if(state==4){return '已完成'}
+			if(state==3){return '已完成'}
 		},
 		getTime(time){
 			function fix(t){

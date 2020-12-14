@@ -35,7 +35,7 @@
 		},
 		methods:{
 			getSum(){
-				this.sum=uni.getStorageSync('shopcart').reduce((pre,val)=>{
+				this.sum=(uni.getStorageSync('shopcart')||[]).reduce((pre,val)=>{
 					return pre+(val.select?val.sum:0)
 				},0)
 			},

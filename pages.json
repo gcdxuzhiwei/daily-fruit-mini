@@ -104,6 +104,12 @@
 			"style": {
 				"navigationBarTitleText": "权限管理"
 			}
+		},
+		{
+			"path": "pages/manage/order/main",
+			"style": {
+				"navigationBarTitleText": "一键发货"
+			}
 		}
 	],
 	"globalStyle": {

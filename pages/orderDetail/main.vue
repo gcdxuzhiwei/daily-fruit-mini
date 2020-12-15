@@ -5,7 +5,8 @@
 				<i :class="'iconfont '+getState(order.state,0)" style="color: rgb(255,153,51);"></i>
 				<span>{{getState(order.state,1)}}</span>
 			</div>
-			<div class="tip">你的订单{{getState(order.state,1)}}，感谢您选择天天果园。</div>
+			<div class="tip" v-if="order.state!==2">你的订单{{getState(order.state,1)}}，感谢您选择天天果园。</div>
+			<div class="tip" v-else>物流号:{{order.sendNumber}}</div>
 			<div class="time">{{getTime(order.orderTime)}}</div>
 		</div>
 		<div class="address">
@@ -59,7 +60,8 @@
 			<div>支付状态：{{order.state<=0?'还未支付':'已支付'}}</div>
 			<div>下单时间：{{getTime(order.orderTime)}}</div>
 		</div>
-		<div v-if="order.state!==0" class="again" @click="again">再来一单</div>
+		<div v-if="order.state==2" class="again" @click="sureSend">确认收货</div>
+		<div v-else-if="order.state!==0" class="again" @click="again">再来一单</div>
 		<div v-else class="again" @click="pay">确认付款</div>
 	</div>
 </template>
@@ -207,6 +209,17 @@
 						uni.navigateBack()
 					})
 				}
+			},
+			sureSend(){
+				uniCloud.callFunction({
+					name: 'order',
+					data: {
+						type: "sureSend",
+						id: this.order._id,
+					}
+				}).then(res => {
+					uni.navigateBack()
+				})
 			}
 		}
 	}

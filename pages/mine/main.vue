@@ -40,6 +40,7 @@
 			<div class="test" @click="goodsManager">商品管理</div>
 			<div class="test" @click="indexManager">首页管理</div>
 			<div class="test" @click="adminManager">权限管理</div>
+			<div class="test" @click="orderManager">一键发货</div>
 		</div>
 		<nav-bar nowIndex='3'></nav-bar>
 	</div>
@@ -96,6 +97,11 @@
 			adminManager() {
 				uni.navigateTo({
 					url: '../manage/admin/main'
+				})
+			},
+			orderManager(){
+				uni.navigateTo({
+					url: '../manage/order/main'
 				})
 			},
 			toLogin() {

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "购物车",
+  "usingComponents": {
+    "u-popup": "/node-modules/uview-ui/components/u-popup/u-popup",
+    "nav-bar": "/pages/component/navBar"
+  }
+}

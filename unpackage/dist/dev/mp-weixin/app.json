@@ -16,7 +16,8 @@
     "pages/order/main",
     "pages/orderDetail/main",
     "pages/orderList/main",
-    "pages/manage/admin/main"
+    "pages/manage/admin/main",
+    "pages/manage/order/main"
   ],
   "subPackages": [],
   "window": {

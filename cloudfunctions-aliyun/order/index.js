@@ -52,6 +52,23 @@ exports.main = async (event, context) => {
 		})
 		return res
 	}
+	if(event.type=='order1'){
+		const count=await order.where({state:1}).get()
+		return count.data
+	}
+	if(event.type=='changeOrder1'){
+		const count=await order.where({_id:event.id}).update({
+			sendNumber:event.sendNumber,
+			state:2
+		})
+		return count
+	}
+	if(event.type=='sureSend'){
+		const count=await order.where({_id:event.id}).update({
+			state:3
+		})
+		return count
+	}
 	//返回数据给客户端
 	return event
 };
